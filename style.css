@@ -1,0 +1,139 @@
+
+body{
+    background-color:whitesmoke ;
+    color: black;
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 2%;
+    margin: 15 px;
+    
+}
+
+/*div*/
+
+.style_1{
+    color: cornflowerblue;
+    padding: 20%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    background-color: grey;
+}
+/*style title*/
+
+.title{
+    font: menu;
+    font-size: 30px;
+    font-family: 'Arial';
+    padding-left: 0% ;    
+    border: 80%;
+}
+.title:hover{
+    color: #4CAF50;
+}
+
+/*style links*/
+
+a{
+    text-decoration: none;
+    }
+
+/*style categories*/
+
+.categories li{
+    padding-bottom: 6px;
+    border-bottom:dotted;
+    list-style-image: url('../images/check.png');
+}
+
+/*style footer*/
+
+footer{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    height: 80px;
+    background-color: #4CAF50;
+    color: whitesmoke;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+}
+
+/*style button*/
+
+.button_1{
+    background-color: #4CAF50;
+    color: white;
+    text-align: right;
+    transition: 0.3s;
+    padding:1px 2px;
+    font-size: 20px;
+    margin: 1px 2px;
+    border: none;
+}
+.button_1:hover{
+    color: black;
+    background-color: white;
+}
+
+/*style table*/
+
+.table_1{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 3px 3px 0 0;
+    overflow:hidden;
+    box-shadow: 0 0 20 px rgba(0, 0, 0, 0.15);
+}
+
+.table_1 thead tr{
+    text-align: left;
+    color: white;
+    background-color: #4CAF50;
+    font-weight: bold;
+}
+
+.table_1 th,
+.table_1 td{
+    padding: 12px 15px;
+}
+
+.table_1 tbody tr{
+    border-bottom: 2px solid #4CAF50;
+    border-right: 2px solid #4CAF50;
+    border-left: 1px solid #4CAF50;
+}
+
+.table_1 tbody tr :nth-of-type(even){
+    background-color: #f3f3f3;
+}
+
+.text{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+nav :hover{
+    color:#4CAF50;
+    text-shadow: 0.5px 0.5px;
+}
+
+/* Grid style */
+
+.my-container {
+    border: 1px solid green;
+}
+.my-row {
+    border: 3px solid red;
+    height: 300px;
+}
+.my-col {
+    border: 3px dotted blue;
+}
+
+/* Grid style */
+
