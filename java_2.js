@@ -11,7 +11,7 @@ var test=[{
 }];
 // implementing the dynamic length of the object into the tittle :
 document.getElementById("table_javascript").innerHTML = `
-<h2 class="text"> Test (${test.length} results) :</h2>
+<h2 class="text"> Test Statistics (${test.length} results) :</h2>
 ${test.map(function(parameter) {
     return `
     <div class='table_1'>

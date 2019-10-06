@@ -128,12 +128,14 @@ nav :hover{
     border: 1px solid green;
 }
 .my-row {
-    border: 3px solid red;
-    height: 300px;
 }
 .my-col {
-    border: 3px dotted blue;
 }
-
+.my-row_2{
+    height: 35px;
+}
+.my-row_3{
+    height: 15px;
+}
 /* Grid style */
 
