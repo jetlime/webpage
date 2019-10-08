@@ -26,7 +26,11 @@ var test=[{
 }];
 // implementing the dynamic length of the object into the tittle:
 document.getElementById("table_javascript").innerHTML = `
-<h2 class="text"> Test Statistics (${test.length} results) :</h2>
+
+<h2 class="text"> 
+<button> <img src="arrow.png" alt="Minimize the page"></button>
+Test Statistics (${test.length} results) :
+</h2>
 <div class='table_1'>
 <table>
 <thead>
