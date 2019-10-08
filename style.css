@@ -1,6 +1,6 @@
 
 body{
-    background-color:whitesmoke ;
+    background-color:white;
     color: black;
     font-family: Arial;
     font-size: 16px;
@@ -139,3 +139,8 @@ nav :hover{
 }
 /* Grid style */
 
+/* nav style*/
+
+.my-navbar{
+    background-color: white;
+}
