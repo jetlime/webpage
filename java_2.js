@@ -23,6 +23,12 @@ var test=[{
     fail : 2,
     time : 0.04, 
     pass_fail: 0
+},{
+    test_id : "Pen Test 2",
+    pass: 119,
+    fail : 2,
+    time : 0.04, 
+    pass_fail: 0
 }];
 // implementing the dynamic length of the object into the tittle:
 document.getElementById("table_javascript").innerHTML = `
@@ -30,6 +36,8 @@ document.getElementById("table_javascript").innerHTML = `
 <h2 class="text"> 
 <button> <img src="arrow.png" alt="Minimize the page"></button>
 Test Statistics (${test.length} results) :
+<div class="my_form"><input type="text" name="search" placeholder="Search..">
+</div>
 </h2>
 <div class='table_1'>
 <table>

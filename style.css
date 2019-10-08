@@ -84,10 +84,11 @@ footer{
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
-    min-width: 400px;
+    min-width: 700px;
     border-radius: 3px 3px 0 0;
     overflow:hidden;
     box-shadow: 0 0 20 px rgba(0, 0, 0, 0.15);
+    align-content: center;
 }
 
 .table_1 thead tr{
@@ -99,12 +100,12 @@ footer{
 
 .table_1 th,
 .table_1 td{
-    padding: 12px 15px;
+    padding: 30px 65px;
 }
 
 .table_1 tbody tr{
-    border-bottom: 2px solid #4CAF50;
-    border-right: 2px solid #4CAF50;
+    border-bottom: 1px solid #4CAF50;
+    border-right: 1px solid #4CAF50;
     border-left: 1px solid #4CAF50;
 }
 
@@ -113,7 +114,7 @@ footer{
 }
 
 .text{
-    font-size: 16px;
+    font-size: 30px;
     font-weight: 600;
 }
 
@@ -124,9 +125,9 @@ nav :hover{
 
 /* Grid style */
 
-.my-container {
+/*.my-container {
     border: 1px solid green;
-}
+}*/
 
 .my-row_2{
     height: 35px;
@@ -150,3 +151,21 @@ button{
     border : white solid;
 }
 button:active{}
+
+.my_form{
+    text-align : left;
+}
+
+input[type=text] {
+    width: 190px;
+    -webkit-transition: width 0.3s ease-in-out;
+    transition: width 0.3s ease-in-out;
+    border: 1px solid #4CAF50;
+    font-size: 30px;
+  }
+  
+  /* When the input field gets focus, change its width to 100% */
+  input[type=text]:focus {
+    width: 80%;
+    border:#4CAF50;
+  }
