@@ -118,10 +118,7 @@ footer{
     font-weight: 600;
 }
 
-nav :hover{
-    color:#4CAF50;
-    text-shadow: 0.5px 0.5px;
-}
+
 
 /* Grid style */
 
@@ -138,23 +135,26 @@ nav :hover{
 .my-row_4{
     height: 100px;
 }
-/* Grid style */
 
 /* nav style*/
 
 .my-navbar{
     background-color: white;
 }
-
+nav :hover{
+    color:#4CAF50;
+    text-shadow: 0.5px 0.5px;
+}
 button{
     background-color: white;
     border : white solid;
 }
-button:active{}
 
 .my_form{
     text-align : left;
 }
+
+/*input style*/
 
 input[type=text] {
     width: 190px;
@@ -165,6 +165,7 @@ input[type=text] {
   }
   
   /* When the input field gets focus, change its width to 100% */
+
   input[type=text]:focus {
     width: 80%;
     border:#4CAF50;
