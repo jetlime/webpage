@@ -30,7 +30,8 @@ var test=[{
     time : 0.04, 
     pass_fail: 0
 }];
-// implementing the dynamic length of the object into the tittle:
+
+// implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 
 <h2 class="text"> 
@@ -67,6 +68,6 @@ ${test.map(function(parameter) {
 </table>
 `
  
-
+// filter for the search functionality
 
 
