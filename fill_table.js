@@ -78,13 +78,13 @@ const searchFun = () =>{
     let tr = myTable.getElementsByTagName('tr');
 
     for(var i=0; i<tr.length; i++){
-        let td = tr[i].getElementsByTagName('td')[0];
+        let th = tr[i].getElementsByTagName('th')[0];
 
-        if(td){
-            let textvalue = td.textContent || td.innerHTML;
+        if(th){
+            let textvalue = th.textContent || th.innerHTML;
 
             if(textvalue.toUpperCase().indexOf(filter) > -1 ){
-                tr[i].style.display = "";
+                tr[i].style.display = " ";
             }else{
                 tr[i].style.display = "none";
             }
