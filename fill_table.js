@@ -29,6 +29,24 @@ var test=[{
     fail : 2,
     time : 0.04, 
     pass_fail: 0
+},{
+    test_id : "Pen Test 3",
+    pass: 119,
+    fail : 2,
+    time : 0.04, 
+    pass_fail: 0
+},{
+    test_id : "Login Test 4",
+    pass: 119,
+    fail : 2,
+    time : 0.04, 
+    pass_fail: 0
+},{
+    test_id : "Pen Test 4",
+    pass: 119,
+    fail : 2,
+    time : 0.04, 
+    pass_fail: 0
 }];
 
 // implementing the dynamic data from the objects in the table and the title
