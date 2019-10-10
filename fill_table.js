@@ -109,3 +109,5 @@ const searchFun = () =>{
         }
     }
 }
+
+// function to sort the table with a toggle
