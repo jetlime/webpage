@@ -37,11 +37,11 @@ document.getElementById("table_javascript").innerHTML = `
 <h2 class="text"> 
 <button> <img src="arrow.png" alt="Minimize the page"></button>
 Test Statistics (${test.length} results) :
-<div class="my_form"><input type="text" name="search" placeholder="Search..">
+<div class="my_form"><input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
 </div>
 </h2>
 <div class='table_1'>
-<table>
+<table id="myTable">
 <thead>
     <tr>
         <th>Total</th>
@@ -70,6 +70,24 @@ ${test.map(function(parameter) {
  
 // filter for the search functionality
 
+const searchFun = () =>{
+    let filter = document.getElementById('myInput').value.toUpperCase();
 
+    let myTable = document.getElementById('myTable');
 
+    let tr = myTable.getElementsByTagName('tr');
 
+    for(var i=0; i<tr.length; i++){
+        let td = tr[i].getElementsByTagName('td')[0];
+
+        if(td){
+            let textvalue = td.textContent || td.innerHTML;
+
+            if(textvalue.toUpperCase().indexOf(filter) > -1 ){
+                tr[i].style.display = "";
+            }else{
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
