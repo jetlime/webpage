@@ -53,7 +53,7 @@ var test=[{
 document.getElementById("table_javascript").innerHTML = `
 
 <h2 class="text"> 
-<button> <img src="arrow.png" alt="Minimize the page"></button>
+<button class='button_2'> <img src="arrow.png" alt="Minimize the page"></button>
 Test Statistics (${test.length} results) :
 <div class="my_form"><input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
 </div>

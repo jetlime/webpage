@@ -66,7 +66,7 @@ footer{
     text-align: center;
 }
 
-/*style button*/
+/*style*/
 
 .button_1{
     background-color: #4CAF50;
@@ -141,7 +141,9 @@ footer{
 .my-row_4{
     height: 100px;
 }
-
+.my_row_log{
+    height: 100px;
+}
 /* nav style*/
 
 .my-navbar{
@@ -151,7 +153,7 @@ nav :hover{
     color:#4CAF50;
     text-shadow: 0.5px 0.5px;
 }
-button{
+.button_2{
     background-color: white;
     border : white solid;
 }

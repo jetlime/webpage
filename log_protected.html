@@ -40,6 +40,23 @@
           </form>
         </div>
       </nav>
-    <p>You succesfully entered the log in interface.</p>
-    </body>
-    </html>
+<script src="password.js"></script>
+<div class="container">
+  <div class="row my_row_log"></div>
+</div>
+<div class="container mycontainer_log">
+<p>You need a password to enter into the log in site.</p>
+    <form>
+      Enter your password :<input type="password" name="PW" value=""
+      onchange="var found=false; result.value='Your password is false !';
+        for (var i=0; i<PWArray.length; i++)
+          if(PW.value == PWArray[i]){
+            found=true;
+            result.value='OK';
+          } " />
+<input type="text" name="result" value="Click to check"/>
+    </form>
+<!--<div id="password_js"></div>-->
+</div>
+</body>
+</html>
