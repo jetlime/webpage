@@ -49,6 +49,11 @@ var test=[{
     pass_fail: 0
 }];
 
+
+
+
+
+
 // implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 
@@ -59,10 +64,10 @@ Test Statistics (${test.length} results) :
 </div>
 </h2>
 <div class='table_1'>
-<table id="myTable">
+<table id="myTable myDataTable">
 <thead>
     <tr>
-        <th>Total</th>
+        <th onClick="sortColumn('total')">Total</th>
         <th>Pass</th>
         <th>Fail</th>
         <th>Time needed</th>
