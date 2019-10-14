@@ -149,9 +149,13 @@ const searchFun = () =>{
 // bar of 20 percent.
 
 const progress =() => {
-    let pass_fail = document.getElementBy
+    for(var i=0; i<test.length; i++){
+        let passFail = test.pass_fail;
+        if(pass_fail){
+            passFail.style.width = passFail +'%';
+        }
+    }
 }
-
 
 // implement accordion view
 document.querySelectorAll('.accordion_button').forEach(button =>{
