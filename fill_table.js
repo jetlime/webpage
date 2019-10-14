@@ -83,7 +83,11 @@ document.getElementById("table_javascript").innerHTML = `
                         <th>${parameter.pass}</th>
                         <th>${parameter.fail}</th>
                         <th>${parameter.time}</th>
-                        <th>${parameter.pass_fail}</th>
+                        <th>
+                            <div class='myProgress'>
+                                <div class='myBar'></div>
+                            </div>
+                        </th>
                     </tr>
         </div>`;
         }).join("")}
@@ -138,6 +142,16 @@ const searchFun = () =>{
         }
     }
 }
+
+// function that takes the pass/fail ratio from the objects to respectively 
+// replaces the width in style form the 'myBar'class. E.G : If the pass/fail ratio is 20
+// then the width in the style from the 'myBar' class will be 20. The result will be a progress
+// bar of 20 percent.
+
+const progress =() => {
+    let pass_fail = document.getElementBy
+}
+
 
 // implement accordion view
 document.querySelectorAll('.accordion_button').forEach(button =>{

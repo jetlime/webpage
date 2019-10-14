@@ -186,8 +186,8 @@ input[type=text] {
 
 .accordion_button{
     display: block;
-    width: 90%;
-    padding: 15px;
+    width: 100%;
+    padding: 25px;
     border: none;
     outline: none;
     cursor: pointer;
@@ -214,3 +214,16 @@ input[type=text] {
     padding: 0 30px;
     background: #eeeeee;
     }
+
+/* style for the progress bar in the dynamic table*/
+
+.myBar{
+    width: 10%;
+    height: 30px;
+    background-color: #4CAF50;
+}
+
+.myProgress{
+    width: 100%;
+    background-color: #ddd;;
+}
