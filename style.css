@@ -178,3 +178,15 @@ input[type=text] {
     width: 80%;
     border:#4CAF50;
   }
+
+  /* Style the buttons that we use for the accorion panel */ 
+
+.accordion{
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.panel{
+    display: block;
+    overflow : hidden;
+}

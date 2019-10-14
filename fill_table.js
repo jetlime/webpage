@@ -56,18 +56,21 @@ var test=[{
 
 // implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
-
+<div>
 <h2 class="text"> 
-<button class='button_2'> <img src="arrow.png" alt="Minimize the page"></button>
+<button class='button_2 accordion'> <img src="arrow -down.png" alt="Minimize the page">
 Test Statistics (${test.length} results) :
-<div class="my_form"><input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
-</div>
 </h2>
+</button>
+</div>
+<div class='panel'>
+<div class="my_form">
+<input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
 <div class='table_1'>
-<table id="myTable myDataTable">
+<table id="myTable">
 <thead>
     <tr>
-        <th onClick="sortColumn('total')">Total</th>
+        <th>Total</th>
         <th>Pass</th>
         <th>Fail</th>
         <th>Time needed</th>
@@ -77,7 +80,6 @@ Test Statistics (${test.length} results) :
 <tbody>
 ${test.map(function(parameter) {
     return `
-
         <tr>
            <th>${parameter.test_id}</th> 
            <th>${parameter.pass}</th>
@@ -85,11 +87,13 @@ ${test.map(function(parameter) {
            <th>${parameter.time}</th>
            <th>${parameter.pass_fail}</th>
         </tr>
-    </div>`;
+</div>`;
 }).join("")}
 </tbody>
 </table>
+</div>
 `
+
  
 // filter for the search functionality
 
@@ -115,4 +119,21 @@ const searchFun = () =>{
     }
 }
 
-// function to sort the table with a toggle
+// implement accordion view
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for(i = 0; i < acc.length; i++){
+    acc[i].addEventListener("click", function(){
+        //toggle between adding and removing the active class
+        this.classList.toggle("active");
+        //toggle between hidding and showing the panel
+        var panel = this.nextElementSibling;
+        if(panel.style.display === "block"){
+            panel.style.display = "none";
+        }else{
+            panel.style.display = "block";
+        }
+    });
+}
