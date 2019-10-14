@@ -51,47 +51,66 @@ var test=[{
 
 
 
-
-
-
 // implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
-<div>
-<button class='button_2 accordion'>
-<h2 class="text">  
-Test Statistics (${test.length} results) :
-</h2>
-</button>
-</div>
-<div class='panel'>
-<div class="my_form">
-<input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
-</div>
-<div class='table_1'>
-<table id="myTable">
-<thead>
-    <tr>
-        <th>Total</th>
-        <th>Pass</th>
-        <th>Fail</th>
-        <th>Time needed</th>
-        <th>Pass/Fail ratio</th>
-    </tr>
-</thead>
-<tbody>
-${test.map(function(parameter) {
-    return `
-        <tr>
-           <th>${parameter.test_id}</th> 
-           <th>${parameter.pass}</th>
-           <th>${parameter.fail}</th>
-           <th>${parameter.time}</th>
-           <th>${parameter.pass_fail}</th>
-        </tr>
-</div>`;
-}).join("")}
-</tbody>
-</table>
+<div class='accodion'>
+    <button class='accordion_button'>
+        <h2 class="text">Test Statistics (${test.length} results) :</h2>
+    </button>
+
+    <div class='accordion_content'>
+        <div class='row my-row_3'>
+        </div>
+        <div class="my_form">
+            <input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
+        </div>
+        <div class='table_1'>
+            <table id="myTable">
+                <thead>
+                    <tr>
+                        <th>Total</th>
+                        <th>Pass</th>
+                        <th>Fail</th>
+                        <th>Time needed</th>
+                        <th>Pass/Fail ratio</th>
+                    </tr>
+                </thead>
+                <tbody>
+        ${test.map(function(parameter) {
+            return `
+                    <tr>
+                        <th>${parameter.test_id}</th> 
+                        <th>${parameter.pass}</th>
+                        <th>${parameter.fail}</th>
+                        <th>${parameter.time}</th>
+                        <th>${parameter.pass_fail}</th>
+                    </tr>
+        </div>`;
+        }).join("")}
+                </tbody>
+            </table>
+    </div>
+    <button class="button_1" type="button"><a href="index.html">Refresh</a></button> 
+    <!--START of pagination tags-->
+          <nav aria-label="...">
+              <ul class="pagination justify-content-end">
+                <li class="page-item disabled">
+                  <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+                  <span class="page-link">
+                    2
+                    <span class="sr-only">(current)</span>
+                  </span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+    <!--END of pagination tags-->
 </div>
 `
 
@@ -121,5 +140,17 @@ const searchFun = () =>{
 }
 
 // implement accordion view
+document.querySelectorAll('.accordion_button').forEach(button =>{
+    button.addEventListener('click', () => {
+        const accordionContent = button.nextElementSibling ;
 
+        button.classList.toggle('accordion_button--active');
+
+        if(button.classList.contains('accordion_button--active')){
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' ;
+        }else{
+            accordionContent.style.maxHeight = 0 ;
+        }
+    });
+});
 
