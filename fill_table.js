@@ -152,6 +152,7 @@ const progress =() => {
     for(var i=0; i<test.length; i++){
         let passFail = test[i].pass_fail;
         myBar.style.width = passFail +'%';
+        console.log(myBar.style.width);
     }
 }
 
