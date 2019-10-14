@@ -85,7 +85,7 @@ document.getElementById("table_javascript").innerHTML = `
                         <th>${parameter.time}</th>
                         <th>
                             <div class='myProgress'>
-                                <div class='myBar'></div>
+                                ${createProgress(parameter.pass_fail)}
                             </div>
                         </th>
                     </tr>
@@ -123,7 +123,7 @@ document.getElementById("table_javascript").innerHTML = `
 
 const searchFun = () =>{
     let filter = document.getElementById('myInput').value.toUpperCase();
-
+    console.log(filter)
     let myTable = document.getElementById('myTable');
 
     let tr = myTable.getElementsByTagName('tr');
@@ -148,12 +148,14 @@ const searchFun = () =>{
 // then the width in the style from the 'myBar' class will be 20. The result will be a progress
 // bar of 20 percent.
 
-const progress =() => {
-    for(var i=0; i<test.length; i++){
-        let passFail = test[i].pass_fail;
-        myBar.style.width = passFail +'%';
-        console.log(myBar.style.width);
-    }
+const createProgress =(percent) => {
+  //      myBar.style.width = percent +'%';
+    //    console.log(myBar.style.width);
+      //  return.innerHTML =`
+        //<div style=''>
+          // <div></div> 
+       // </div>
+        `
 }
 
 // implement accordion view
