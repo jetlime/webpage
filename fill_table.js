@@ -57,8 +57,8 @@ var test=[{
 // implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 <div>
-<h2 class="text"> 
-<button class='button_2 accordion'> <img src="arrow -down.png" alt="Minimize the page">
+<button class='button_2 accordion'>
+<h2 class="text">  
 Test Statistics (${test.length} results) :
 </h2>
 </button>
@@ -66,6 +66,7 @@ Test Statistics (${test.length} results) :
 <div class='panel'>
 <div class="my_form">
 <input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
+</div>
 <div class='table_1'>
 <table id="myTable">
 <thead>
@@ -121,19 +122,4 @@ const searchFun = () =>{
 
 // implement accordion view
 
-var acc = document.getElementsByClassName("accordion");
-var i;
 
-for(i = 0; i < acc.length; i++){
-    acc[i].addEventListener("click", function(){
-        //toggle between adding and removing the active class
-        this.classList.toggle("active");
-        //toggle between hidding and showing the panel
-        var panel = this.nextElementSibling;
-        if(panel.style.display === "block"){
-            panel.style.display = "none";
-        }else{
-            panel.style.display = "block";
-        }
-    });
-}
