@@ -150,10 +150,8 @@ const searchFun = () =>{
 
 const progress =() => {
     for(var i=0; i<test.length; i++){
-        let passFail = test.pass_fail;
-        if(pass_fail){
-            passFail.style.width = passFail +'%';
-        }
+        let passFail = test[i].pass_fail;
+        myBar.style.width = passFail +'%';
     }
 }
 
