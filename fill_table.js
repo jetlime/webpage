@@ -47,6 +47,12 @@ var test=[{
     fail : 2,
     time : 0.04, 
     pass_fail: 0
+},{
+    test_id : "Pen Test 4",
+    pass: 119,
+    fail : 2,
+    time : 0.04, 
+    pass_fail: 0
 }];
 
 
@@ -65,7 +71,7 @@ document.getElementById("table_javascript").innerHTML = `
             <input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
         </div>
         <div class='table_1'>
-            <table id="myTable">
+            <table>
                 <thead>
                     <tr>
                         <th>Total</th>
@@ -75,7 +81,7 @@ document.getElementById("table_javascript").innerHTML = `
                         <th>Pass/Fail ratio</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="myTable">
         ${test.map(function(parameter) {
             return `
                     <tr>
@@ -85,7 +91,7 @@ document.getElementById("table_javascript").innerHTML = `
                         <th>${parameter.time}</th>
                         <th>
                             <div class='myProgress'>
-                                ${createProgress(parameter.pass_fail)}
+                                <div class='myBar'>createProgress(parameter.pass_fail)</div>
                             </div>
                         </th>
                     </tr>
@@ -143,20 +149,28 @@ const searchFun = () =>{
     }
 }
 
+//function that sorts the table by clicking on the header
+
+const sortFunction = () =>{
+    let tr = document.getElementsByTagName('tr');
+    console.log(tr);
+
+}
+
 // function that takes the pass/fail ratio from the objects to respectively 
 // replaces the width in style form the 'myBar'class. E.G : If the pass/fail ratio is 20
 // then the width in the style from the 'myBar' class will be 20. The result will be a progress
 // bar of 20 percent.
 
-const createProgress =(percent) => {
-  //      myBar.style.width = percent +'%';
+//const createProgress =(percent) => {
+      //  myBar.style.width = percent +'%';
     //    console.log(myBar.style.width);
-      //  return.innerHTML =`
-        //<div style=''>
-          // <div></div> 
-       // </div>
-        `
-}
+  //      return document.innerHTML =`
+      //  <div style=''>
+        //   <div></div> 
+    //    </div>
+  //      `
+//}
 
 // implement accordion view
 document.querySelectorAll('.accordion_button').forEach(button =>{
