@@ -72,7 +72,7 @@ document.getElementById("table_javascript").innerHTML = `
         </div>
         <div class='table_1'>
             <table>
-                <thead>
+                <thead id='myHead'>
                     <tr>
                         <th>Total</th>
                         <th>Pass</th>
@@ -85,7 +85,7 @@ document.getElementById("table_javascript").innerHTML = `
         ${test.map(function(parameter) {
             return `
                     <tr>
-                        <th>${parameter.test_id}</th> 
+                        <th id='sortTh'>${parameter.test_id}</th> 
                         <th>${parameter.pass}</th>
                         <th>${parameter.fail}</th>
                         <th>${parameter.time}</th>
@@ -152,12 +152,14 @@ const searchFun = () =>{
 //function that sorts the table by clicking on the header
 
 const sortFunction = () =>{
-    let tr = document.getElementsByTagName('tr');
+    let tr = document.getElementById('myTable');
     console.log(tr);
+    let thead = document.getElementById('myHead');
+    console.log(thead);
     thead.addEventListener('click', () =>{
-
+        test = test.sort();
+        console.log(test)
     });
-
 }
 
 // function that takes the pass/fail ratio from the objects to respectively 
