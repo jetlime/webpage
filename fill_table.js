@@ -154,6 +154,9 @@ const searchFun = () =>{
 const sortFunction = () =>{
     let tr = document.getElementsByTagName('tr');
     console.log(tr);
+    thead.addEventListener('click', () =>{
+
+    });
 
 }
 
