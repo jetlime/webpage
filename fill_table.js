@@ -1,6 +1,6 @@
 // Object defining the test details
 var test=[{
-    test_id : "password test",
+    test_id: "password test",
     pass: 1,
     fail : 5,
     time : 0.03,
@@ -28,13 +28,13 @@ var test=[{
     pass: 119,
     fail : 2,
     time : 0.04, 
-    pass_fail: 0
+    pass_fail: 1
 },{
     test_id : "Pen Test 3",
     pass: 119,
     fail : 2,
     time : 0.04, 
-    pass_fail: 0
+    pass_fail: 40
 },{
     test_id : "Login Test 4",
     pass: 119,
@@ -46,7 +46,7 @@ var test=[{
     pass: 119,
     fail : 2,
     time : 0.04, 
-    pass_fail: 0
+    pass_fail: 80
 },{
     test_id : "Pen Test 4",
     pass: 119,
@@ -71,7 +71,7 @@ document.getElementById("table_javascript").innerHTML = `
             <input type="text" name="search" id="myInput" placeholder=" Search.." onkeyup="searchFun()">
         </div>
         <div class='table_1'>
-            <table>
+            <table id='mySortedTable'>
                 <thead id='myHead'>
                     <tr>
                         <th>Total</th>
@@ -91,7 +91,7 @@ document.getElementById("table_javascript").innerHTML = `
                         <th>${parameter.time}</th>
                         <th>
                             <div class='myProgress'>
-                                <div class='myBar'>createProgress(parameter.pass_fail)</div>
+                                <div style="background-color:#4CAF50; width:${parameter.pass_fail}%;">${parameter.pass_fail}%</div>
                             </div>
                         </th>
                     </tr>
@@ -123,8 +123,11 @@ document.getElementById("table_javascript").innerHTML = `
     <!--END of pagination tags-->
 </div>
 `
+//createProgress(parameter.pass_fail)
 
- 
+
+
+
 // filter for the search functionality
 
 const searchFun = () =>{
@@ -157,10 +160,20 @@ const sortFunction = () =>{
     let thead = document.getElementById('myHead');
     console.log(thead);
     thead.addEventListener('click', () =>{
-        test = test.sort();
-        console.log(test)
-    });
+        console.log('Your click was recognized !')
+        });
 }
+
+//<script type="text/javascript" src="/gs_sortable.js"></script>
+//<script type="text/javascript">
+//<!--
+//var TSort_Data = new Array ('mySortedTable', 's', 'i', 'f');
+//tsRegister();
+// -->
+//</script>
+
+// sort by name
+
 
 // function that takes the pass/fail ratio from the objects to respectively 
 // replaces the width in style form the 'myBar'class. E.G : If the pass/fail ratio is 20

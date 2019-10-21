@@ -218,12 +218,14 @@ input[type=text] {
 /* style for the progress bar in the dynamic table*/
 
 .myBar{
-    width: 10%;
-    height: 30px;
-    background-color: #4CAF50;
+    height: 20px;
 }
 
 .myProgress{
-    width: 100%;
-    background-color: #ddd;;
+    width: 180%;
+    background-color: #ddd;
+}
+
+#myHead:hover{
+    cursor:pointer ;   
 }
