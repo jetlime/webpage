@@ -122,6 +122,7 @@ document.getElementById("table_javascript").innerHTML = `
             </nav>
     <!--END of pagination tags-->
 </div>
+<script type="text/javascript" src="http://localhost"
 `
 //createProgress(parameter.pass_fail)
 
