@@ -122,7 +122,7 @@ document.getElementById("table_javascript").innerHTML = `
             </nav>
     <!--END of pagination tags-->
 </div>
-<script type="text/javascript" src="http://localhost"
+<!--<script type="text/javascript" src="http://localhost"-->
 `
 //createProgress(parameter.pass_fail)
 
@@ -135,7 +135,7 @@ const searchFun = () =>{
     let filter = document.getElementById('myInput').value.toUpperCase();
     console.log(filter)
     let myTable = document.getElementById('myTable');
-
+ 
     let tr = myTable.getElementsByTagName('tr');
 
     for(var i=0; i<tr.length; i++){
