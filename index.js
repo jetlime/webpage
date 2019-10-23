@@ -1,6 +1,9 @@
-// Import the express library
+// Import the express and morgan library
 const express = require('express');
 const app = express();
+const morgan = require('morgan')
+//will give use the time needed for the request (debug help)
+app.use(morgan('short'))
 
 // Create server on a given port :
 // PORT can be set in terminal zith "set PORT=portnumber" command,
@@ -91,9 +94,8 @@ app.get('/api/test' , (req,res) =>{
 // Get a single test : (does not work)
 
 app.get('/api/test/:id' ,(req,res) => {
-    const test = test.find(c => c.id === parseInt(req.params.id));
-    if (!test) res.status(404).send('The test with the given ID was not found :(');
-    res.send(test);
+    console.log("Fetching user with id " + req.params.id);
+    res.end();
 })
 
 
