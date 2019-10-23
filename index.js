@@ -1,7 +1,14 @@
+// Import the express library
 const express = require('express');
 const app = express();
 
+// Create server on a given port :
+// PORT can be set in terminal zith "set PORT=portnumber" command,
+// If not defined the port number is 3000.
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Listening on port ${port}...`));
 
+// Json Arrays :
 const test=[{
     id : 1,
     test_id: "password test",
@@ -67,16 +74,21 @@ const test=[{
     pass_fail: 0
 }];
 
+
+// Get request by going to the root (/) :
+// This is a callback function with two parameters.
+// "req" is the request from the browser.
+// "res" is the response from the server.
 app.get('/', (req,res) => {
-    res.send('Hello World !!!');
+    res.send('This is the root of the local webserver. Under the directory "/api/test" you will find the Json arrays.');
 });
-// get list of database and return it :
 
+// Get the Json array in the following directory :
 app.get('/api/test' , (req,res) =>{
-    res.send(test);
+    res.json(test);
 });
 
-//get a single test : (does not work)
+// Get a single test : (does not work)
 
 app.get('/api/test/:id' ,(req,res) => {
     const test = test.find(c => c.id === parseInt(req.params.id));
@@ -84,10 +96,8 @@ app.get('/api/test/:id' ,(req,res) => {
     res.send(test);
 })
 
-// PORT can be set in terminal zith "set PORT=portnumber" command,
-//if not defined the port number is 3000.
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+
 
 app.post('/api/test', (req,res) =>{
     if(!req.body.name || req.body.name.length < 3){
