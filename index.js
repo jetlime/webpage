@@ -98,7 +98,11 @@ app.get('/api/test/:id', (req, res) => {
     res.end();
 })
 
-
+// If file is not found :
+app.get('/api', (req, res) => {
+    res.status(404).send('ERROR 404 File not found');
+    res.end();
+})
 
 
 app.post('/api/test', (req, res) => {

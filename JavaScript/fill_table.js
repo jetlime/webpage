@@ -57,7 +57,7 @@ var test = [{
 
 
 
-// implementing the dynamic data from the objects in the table and the title
+// Implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 <div class='accodion'>
     <button class='accordion_button'>
@@ -74,11 +74,11 @@ document.getElementById("table_javascript").innerHTML = `
             <table id='mySortedTable'>
                 <thead id='myHead'>
                     <tr>
-                        <th>Total</th>
-                        <th>Pass</th>
-                        <th>Fail</th>
-                        <th>Time needed</th>
-                        <th>Pass/Fail ratio</th>
+                        <td>Total</th>
+                        <td>Pass</th>
+                        <td>Fail</th>
+                        <td>Time needed</th>
+                        <td>Pass/Fail ratio</th>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -153,17 +153,9 @@ const searchFun = () => {
     }
 }
 
-//function that sorts the table by clicking on the header
+// Function that sorts the table by clicking on the header
 
-const sortFunction = () => {
-    let tr = document.getElementById('myTable');
-    console.log(tr);
-    let thead = document.getElementById('myHead');
-    console.log(thead);
-    thead.addEventListener('click', () => {
-        console.log('Your click was recognized !')
-    });
-}
+
 
 //<script type="text/javascript" src="/gs_sortable.js"></script>
 //<script type="text/javascript">
