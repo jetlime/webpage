@@ -1,57 +1,57 @@
 // Object defining the test details
-var test=[{
+var test = [{
     test_id: "password test",
     pass: 1,
-    fail : 5,
-    time : 0.03,
+    fail: 5,
+    time: 0.03,
     pass_fail: 20,
-},{
-    test_id : "Form testing",
+}, {
+    test_id: "Form testing",
     pass: 10,
-    fail : 0,
-    time : 0.09, 
+    fail: 0,
+    time: 0.09,
     pass_fail: 100
-},{
-    test_id : "Login Test 2",
+}, {
+    test_id: "Login Test 2",
     pass: 15,
-    fail : 0,
-    time : 0.04, 
+    fail: 0,
+    time: 0.04,
     pass_fail: 100,
-},{
-    test_id : "Pen Test",
+}, {
+    test_id: "Pen Test",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 0
-},{
-    test_id : "Pen Test 2",
+}, {
+    test_id: "Pen Test 2",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 1
-},{
-    test_id : "Pen Test 3",
+}, {
+    test_id: "Pen Test 3",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 40
-},{
-    test_id : "Login Test 4",
+}, {
+    test_id: "Login Test 4",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 0
-},{
-    test_id : "Pen Test 4",
+}, {
+    test_id: "Pen Test 4",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 80
-},{
-    test_id : "Pen Test 4",
+}, {
+    test_id: "Pen Test 4",
     pass: 119,
-    fail : 2,
-    time : 0.04, 
+    fail: 2,
+    time: 0.04,
     pass_fail: 0
 }];
 
@@ -82,8 +82,8 @@ document.getElementById("table_javascript").innerHTML = `
                     </tr>
                 </thead>
                 <tbody id="myTable">
-        ${test.map(function(parameter) {
-            return `
+        ${test.map(function (parameter) {
+    return `
                     <tr>
                         <th id='sortTh'>${parameter.test_id}</th> 
                         <th>${parameter.pass}</th>
@@ -96,7 +96,7 @@ document.getElementById("table_javascript").innerHTML = `
                         </th>
                     </tr>
         </div>`;
-        }).join("")}
+}).join("")}
                 </tbody>
             </table>
     </div>
@@ -131,22 +131,22 @@ document.getElementById("table_javascript").innerHTML = `
 
 // filter for the search functionality
 
-const searchFun = () =>{
+const searchFun = () => {
     let filter = document.getElementById('myInput').value.toUpperCase();
     console.log(filter)
     let myTable = document.getElementById('myTable');
- 
+
     let tr = myTable.getElementsByTagName('tr');
 
-    for(var i=0; i<tr.length; i++){
+    for (var i = 0; i < tr.length; i++) {
         let th = tr[i].getElementsByTagName('th')[0];
 
-        if(th){
+        if (th) {
             let textvalue = th.textContent || th.innerHTML;
 
-            if(textvalue.toUpperCase().indexOf(filter) > -1 ){
+            if (textvalue.toUpperCase().indexOf(filter) > -1) {
                 tr[i].style.display = " ";
-            }else{
+            } else {
                 tr[i].style.display = "none";
             }
         }
@@ -155,14 +155,14 @@ const searchFun = () =>{
 
 //function that sorts the table by clicking on the header
 
-const sortFunction = () =>{
+const sortFunction = () => {
     let tr = document.getElementById('myTable');
     console.log(tr);
     let thead = document.getElementById('myHead');
     console.log(thead);
-    thead.addEventListener('click', () =>{
+    thead.addEventListener('click', () => {
         console.log('Your click was recognized !')
-        });
+    });
 }
 
 //<script type="text/javascript" src="/gs_sortable.js"></script>
@@ -182,26 +182,26 @@ const sortFunction = () =>{
 // bar of 20 percent.
 
 //const createProgress =(percent) => {
-      //  myBar.style.width = percent +'%';
-    //    console.log(myBar.style.width);
-  //      return document.innerHTML =`
-      //  <div style=''>
-        //   <div></div> 
-    //    </div>
-  //      `
+//  myBar.style.width = percent +'%';
+//    console.log(myBar.style.width);
+//      return document.innerHTML =`
+//  <div style=''>
+//   <div></div> 
+//    </div>
+//      `
 //}
 
 // implement accordion view
-document.querySelectorAll('.accordion_button').forEach(button =>{
+document.querySelectorAll('.accordion_button').forEach(button => {
     button.addEventListener('click', () => {
-        const accordionContent = button.nextElementSibling ;
+        const accordionContent = button.nextElementSibling;
 
         button.classList.toggle('accordion_button--active');
 
-        if(button.classList.contains('accordion_button--active')){
-            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px' ;
-        }else{
-            accordionContent.style.maxHeight = 0 ;
+        if (button.classList.contains('accordion_button--active')) {
+            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+        } else {
+            accordionContent.style.maxHeight = 0;
         }
     });
 });
