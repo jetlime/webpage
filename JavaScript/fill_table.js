@@ -56,7 +56,6 @@ var test = [{
 }];
 
 
-
 // Implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 <div class='accodion'>
@@ -74,11 +73,11 @@ document.getElementById("table_javascript").innerHTML = `
             <table id='mySortedTable'>
                 <thead id='myHead'>
                     <tr>
-                        <td onClick="sortTable(0)">Total</td>
-                        <td>Pass</td>
-                        <td>Fail</td>
-                        <td>Time needed</td>
-                        <td>Pass/Fail ratio</td>
+                        <td onClick="sortTable(0)">Total <i class="fas fa-sort toggle"></i></td>
+                        <td onClick="sortingTable(1)">Pass <i class="fas fa-sort toggle"></i></td>
+                        <td onClick="sortingTable(2)">Fail <i class="fas fa-sort toggle"></i></td>
+                        <td onClick="sortingTable(3)">Time needed <i class="fas fa-sort toggle"></i></td>
+                        <td onClick="sortingTable(4)">Pass/Fail ratio</td>
                     </tr>
                 </thead>
                 <tbody id="myTable">
@@ -99,8 +98,7 @@ document.getElementById("table_javascript").innerHTML = `
 }).join("")}
                 </tbody>
             </table>
-    </div>
-    <button class="button_1" type="button"><a href="index.html">Refresh</a></button> 
+    </div> 
     <!--START of pagination tags-->
           <nav aria-label="...">
               <ul class="pagination justify-content-end">
@@ -143,7 +141,7 @@ const searchFun = () => {
             let textvalue = th.textContent || th.innerHTML;
 
             if (textvalue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = " ";
+                tr[i].style.display = "table-row";
             } else {
                 tr[i].style.display = "none";
             }
@@ -154,59 +152,97 @@ const searchFun = () => {
 // Function that sorts the table by clicking on the header
 
 function sortTable(n) {
-  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-  table = document.getElementById("myTable");
-  switching = true;
-  //Set the sorting direction to ascending:
-  dir = "asc"; 
-  /*Make a loop that will continue until
-  no switching has been done:*/
-  while (switching) {
-    //start by saying: no switching is done:
-    switching = false;
-    rows = table.rows;
-    /*Loop through all table rows (except the
-    first, which contains table headers):*/
-    for (i = 0; i < (rows.length - 1); i++) {
-      //start by saying there should be no switching:
-      shouldSwitch = false;
-      /*Get the two elements you want to compare,
-      one from current row and one from the next:*/
-      x = rows[i].getElementsByTagName("th")[n];
-      y = rows[i + 1].getElementsByTagName("th")[n];
-      /*check if the two rows should switch place,
-      based on the direction, asc or desc:*/
-      if (dir == "asc") {
-        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-          //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
-          break;
+
+    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    table = document.getElementById("myTable");
+    switching = true;
+    //Set the sorting direction to ascending:
+    dir = "asc";
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+        //start by saying: no switching is done:
+        switching = false;
+        rows = table.rows;
+        /*Loop through all table rows (except the
+        first, which contains table headers):*/
+        for (i = 0; i < (rows.length - 1); i++) {
+            //start by saying there should be no switching:
+            shouldSwitch = false;
+            /*Get the two elements you want to compare,
+            one from current row and one from the next:*/
+            x = rows[i].getElementsByTagName("th")[n];
+            y = rows[i + 1].getElementsByTagName("th")[n];
+            /*check if the two rows should switch place,
+            based on the direction, asc or desc:*/
+            if (dir == "asc") {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            } else if (dir == "desc") {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                    //if so, mark as a switch and break the loop:
+                    shouldSwitch = true;
+                    break;
+                }
+            }
         }
-      } else if (dir == "desc") {
-        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+        if (shouldSwitch) {
+            /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+            switching = true;
+            //Each time a switch is done, increase this count by 1:
+            switchcount++;
+        } else {
+            /*If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again.*/
+            if (switchcount == 0 && dir == "asc") {
+                dir = "desc";
+                switching = true;
+            }
+        }
+    }
+}
+
+// Sorts table for numerical values :
+function sortingTable(n) {
+    var table, rows, switching, i, x, y, shouldSwitch;
+    table = document.getElementById("myTable");
+    switching = true;
+    /*Make a loop that will continue until
+    no switching has been done:*/
+    while (switching) {
+      //start by saying: no switching is done:
+      switching = false;
+      rows = table.rows;
+      /*Loop through all table rows (except the
+      first, which contains table headers):*/
+      for (i = 0; i < (rows.length - 1); i++) {
+        //start by saying there should be no switching:
+        shouldSwitch = false;
+        /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+        x = rows[i].getElementsByTagName("th")[n];
+        y = rows[i + 1].getElementsByTagName("th")[n];
+        //check if the two rows should switch place:
+        if (Number(x.innerHTML) > Number(y.innerHTML)) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
       }
-    }
-    if (shouldSwitch) {
-      /*If a switch has been marked, make the switch
-      and mark that a switch has been done:*/
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-      //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
-    } else {
-      /*If no switching has been done AND the direction is "asc",
-      set the direction to "desc" and run the while loop again.*/
-      if (switchcount == 0 && dir == "asc") {
-        dir = "desc";
+      if (shouldSwitch) {
+        /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
         switching = true;
       }
     }
   }
-}
+
 
 //<script type="text/javascript" src="/gs_sortable.js"></script>
 //<script type="text/javascript">
