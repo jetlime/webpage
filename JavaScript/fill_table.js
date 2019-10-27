@@ -55,7 +55,6 @@ var test = [{
     pass_fail: 0
 }];
 
-
 // Implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 <div class='accodion'>
@@ -120,10 +119,7 @@ document.getElementById("table_javascript").innerHTML = `
             </nav>
     <!--END of pagination tags-->
 </div>
-<!--<script type="text/javascript" src="http://localhost"-->
 `
-
-
 
 // filter for the search functionality
 
