@@ -13,6 +13,13 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 // Json Arrays :
 const test = [{
+    id: 0,
+    test_id: "password test",
+    pass: 1,
+    fail: 5,
+    time: 0.03,
+    pass_fail: 20,
+}, {
     id: 1,
     test_id: "password test",
     pass: 1,
@@ -77,7 +84,6 @@ const test = [{
     pass_fail: 0
 }];
 
-
 // Get request by going to the root (/) :
 // This is a callback function with two parameters.
 // "req" is the request from the browser.
@@ -91,19 +97,22 @@ app.get('/api/test', (req, res) => {
     res.json(test);
 });
 
-// Get a single test : (does not work)
-
+// Get a single test : 
 app.get('/api/test/:id', (req, res) => {
-    console.log("Fetching user with id " + req.params.id);
-    res.end();
+    // If the id does not exist an error is shown :
+    if(req.params.id>test.length-1){
+        res.status(404).send('ERROR 404 File not found. A test with an id of ' + req.params.id + ' does not exist.');
+        console.log('This id does not exist.');
+    }else{
+        console.log("Fetching user with id " + req.params.id);
+        res.json(test[req.params.id]);
+    }
+    
 })
 
-// If file is not found :
-app.get('/api', (req, res) => {
-    res.status(404).send('ERROR 404 File not found');
-    res.end();
+app.get('/api' , (req,res) => {
+    res.send('This is the api root.');
 })
-
 
 app.post('/api/test', (req, res) => {
     if (!req.body.name || req.body.name.length < 3) {
