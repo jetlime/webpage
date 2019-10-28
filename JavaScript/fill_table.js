@@ -118,10 +118,20 @@ document.getElementById("table_javascript").innerHTML = `
               </ul>
             </nav>
     <!--END of pagination tags-->
+    <button type="submit" onclick="userAction()">Refresh the DATA</button>
 </div>
 `
+// Fetch data from local server
+const userAction = async () => {
+    const response = await fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'});
+    const myJson = await response.json(); //extract JSON from the http response
+    // const test_1 = JSON.parse(test);
+    console.log(myJson);
+    
+  }
 
-// filter for the search functionality
+
+// Filter for the search functionality
 
 const searchFun = () => {
     let filter = document.getElementById('myInput').value.toUpperCase();
