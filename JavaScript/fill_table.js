@@ -121,15 +121,32 @@ document.getElementById("table_javascript").innerHTML = `
     <button type="submit" onclick="userAction()">Refresh the DATA</button>
 </div>
 `
-// Fetch data from local server
-const userAction = async () => {
-    const response = await fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'});
-    const myJson = await response.json(); //extract JSON from the http response
-    // const test_1 = JSON.parse(test);
-    console.log(myJson);
+  // Fetch data from local server
+  const userAction = async () => {
+      const response = await fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'});
+      //const myJson = await response.json(test); //extract JSON from the http response
+      //const test_1 = JSON.parse(test);
+      console.log(response);
     
-  }
+    }
 
+/*const userAction = async () => {
+    fetch('http://localhost:3000/api/test' , {'mode':'no-cors'})
+    .then(response => {
+        setTimeout(() => null, 0);
+        //return response.json();
+        console.log(response);
+    })
+    .then(response => {
+        console.log(response);
+    });
+  }*/
+//const userAction = async () => {
+    //const response = fetch('http://localhost:3000/api/test' , {'mode' : 'no-cors'});
+    //console.log(response);
+    //const myJson = await response.json();
+    //console.log(JSON.stringify(myJson));
+//}
 
 // Filter for the search functionality
 

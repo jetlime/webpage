@@ -114,15 +114,6 @@ app.get('/api' , (req,res) => {
     res.send('This is the api root.');
 })
 
-app.post('/api/test', (req, res) => {
-    if (!req.body.name || req.body.name.length < 3) {
-        res.status(400).send('Name is not long enought');
-        return;
-    }
-    const test = {
-        id: test.length + 1,
-        name: req.body.name
-    }
-    test.push(test);
-    res.send(test);
-})
+app.get('/api/cars' , (req,res)=>{
+    res.sendFile(path.join(__dirname , 'C:\Users\jeane\Documents\Cours\BSP Sem1\Webpage\webpage\testing.json'));
+});
