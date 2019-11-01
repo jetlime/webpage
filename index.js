@@ -115,7 +115,7 @@ app.get('/test/:id', (req, res) => {
 })
 
 app.get('/testing.json' , (req,res) => {
-    res.;
+    // res. json
 });
 /*.app.get('/api' , (req,res) => {
     res.send('This is the api root.');
