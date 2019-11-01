@@ -123,7 +123,7 @@ document.getElementById("table_javascript").innerHTML = `
 `
   // Fetch data from local server
   const userAction = async () => {
-      return fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'})
+      return fetch('http://localhost:3000/test' ,{'mode': 'no-cors'})
         .then(res => res)
         .then(posts => console.log(posts))
     }
