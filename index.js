@@ -93,7 +93,7 @@ const test = [{
 // "req" is the request from the browser.
 // "res" is the response from the server.
 app.get('/', (req, res) => {
-    res.send('This is the root of the local webserver. Under the directory "/api/test" you will find the Json arrays.');
+    res.send('This is the root of the local webserver. Under the directory "/test" you will find the Json arrays.');
 });
 
 // Get the Json array in the following directory :
