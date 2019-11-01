@@ -4,6 +4,10 @@ const app = express();
 const morgan = require('morgan')
 //will give use the time needed for the request (debug help)
 app.use(morgan('short'))
+app.use('/api', express.static('api'), function(req, res){
+    res.status(404);
+    res.json({error:{code:400}})
+});
 
 // Create server on a given port :
 // PORT can be set in terminal zith "set PORT=portnumber" command,
@@ -93,12 +97,12 @@ app.get('/', (req, res) => {
 });
 
 // Get the Json array in the following directory :
-app.get('/api/test', (req, res) => {
+app.get('/test', (req, res) => {
     res.json(test);
 });
 
 // Get a single test : 
-app.get('/api/test/:id', (req, res) => {
+app.get('/test/:id', (req, res) => {
     // If the id does not exist an error is shown :
     if(req.params.id>test.length-1){
         res.status(404).send('ERROR 404 File not found. A test with an id of ' + req.params.id + ' does not exist.');
@@ -110,10 +114,13 @@ app.get('/api/test/:id', (req, res) => {
     
 })
 
-app.get('/api' , (req,res) => {
+app.get('/testing.json' , (req,res) => {
+    res.;
+});
+/*.app.get('/api' , (req,res) => {
     res.send('This is the api root.');
-})
+})*/
 
 app.get('/api/cars' , (req,res)=>{
-    res.sendFile(path.join(__dirname , 'C:\Users\jeane\Documents\Cours\BSP Sem1\Webpage\webpage\testing.json'));
+    res.sendFile(path.join(__dirname , 'testing.json'));
 });

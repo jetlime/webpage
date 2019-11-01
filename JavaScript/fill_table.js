@@ -123,11 +123,9 @@ document.getElementById("table_javascript").innerHTML = `
 `
   // Fetch data from local server
   const userAction = async () => {
-      const response = await fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'});
-      //const myJson = await response.json(test); //extract JSON from the http response
-      //const test_1 = JSON.parse(test);
-      console.log(response);
-    
+      return fetch('http://localhost:3000/api/test' ,{'mode': 'no-cors'})
+        .then(res => res)
+        .then(posts => console.log(posts))
     }
 
 /*const userAction = async () => {
