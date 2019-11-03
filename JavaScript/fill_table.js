@@ -1,5 +1,5 @@
 // Object defining the test details
-var test = [
+/*var test = [
   {
     test_id: "password test",
     pass: 1,
@@ -63,12 +63,25 @@ var test = [
     time: 0.04,
     pass_fail: 0
   }
-];
+];*/
 
+// Fetching data from localhost :
+const userAction = async () => {
+  $.ajax({
+            url:"http://localhost:3000/test",
+            method:"GET",
+			mode: "no-cors",
+			dataType: 'jsonp',
+            success:function(data){
+          console.log(data.test);
+          test = data.test;
+          console.log(test);
+          
+       
 // Implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
 <div class='accodion'>
-    <button class='accordion_button'>
+    <button onClick="accordion()"  class='accordion_button'>
         <h2 class="text">Test Statistics (${test.length} results) :</h2>
     </button>
 
@@ -130,66 +143,12 @@ document.getElementById("table_javascript").innerHTML = `
               </ul>
             </nav>
     <!--END of pagination tags-->
-    <button type="submit" onclick="userAction()">Refresh the DATA</button>
+
 </div>
 `;
-
-// Fetch data from local server
-const userAction = async () => {
-  //return fetch('http://localhost:3000/test' ,{'mode': 'no-cors'})
-  //   .then(res => console.log(await res.json()))//1 min
-  // }
-  /*\
-  const response = await fetch("http://localhost:3000/test", {
-    mode: "no-cors"
-  });
-  console.log(JSON.stringify(response)); 
-  const myJson = await response.json();
-  console.log(JSON.stringify(myJson)); 
-*/
-  $.ajax({
-            url:"http://localhost:3000/test",
-            method:"GET",
-			mode: "no-cors",
-			dataType: 'jsonp',
-            success:function(data){
-				  console.log(data.test);
-            }
-        });
-		};
-/*
-  var opts = { //ajeeb oo just min
-    method: "GET",
-    headers: {},
-    mode: "no-cors"
-  };
-  fetch("http://localhost:3000/test", opts)
-    .then(function(response) {
-      return response.arrayBuffer();
-    })
-    .then(function(body) {
-      console.log(body);
-      //doSomething with body;
-    });
+}
+});
 };
-
-const userAction = async () => {
-    fetch('http://localhost:3000/api/test' , {'mode':'no-cors'})
-    .then(response => {
-        //setTimeout(() => null, 0);
-        return response.json();
-        console.log(response);
-    })
-    .then(response => {
-        console.log(response);
-    });
-  } */
-//const userAction = async () => {
-//const response = fetch('http://localhost:3000/api/test' , {'mode' : 'no-cors'});
-//console.log(response);
-//const myJson = await response.json();
-//console.log(JSON.stringify(myJson));
-//}
 
 // Filter for the search functionality
 
@@ -316,42 +275,18 @@ function sortingTable(n) {
   }
 }
 
-//<script type="text/javascript" src="/gs_sortable.js"></script>
-//<script type="text/javascript">
-//<!--
-//var TSort_Data = new Array ('mySortedTable', 's', 'i', 'f');
-//tsRegister();
-// -->
-//</script>
+const accordion = () => {
+  // implement accordion view
+  document.querySelectorAll(".accordion_button").forEach(button => {
+    button.addEventListener("click", () => {
+      const accordionContent = button.nextElementSibling;
+      button.classList.toggle("accordion_button--active");
 
-// sort by name
-
-// function that takes the pass/fail ratio from the objects to respectively
-// replaces the width in style form the 'myBar'class. E.G : If the pass/fail ratio is 20
-// then the width in the style from the 'myBar' class will be 20. The result will be a progress
-// bar of 20 percent.
-
-//const createProgress =(percent) => {
-//  myBar.style.width = percent +'%';
-//    console.log(myBar.style.width);
-//      return document.innerHTML =`
-//  <div style=''>
-//   <div></div>
-//    </div>
-//      `
-//}
-
-// implement accordion view
-document.querySelectorAll(".accordion_button").forEach(button => {
-  button.addEventListener("click", () => {
-    const accordionContent = button.nextElementSibling;
-
-    button.classList.toggle("accordion_button--active");
-
-    if (button.classList.contains("accordion_button--active")) {
-      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
-    } else {
-      accordionContent.style.maxHeight = 0;
-    }
+      if (button.classList.contains("accordion_button--active")) {
+        accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+      } else {
+        accordionContent.style.maxHeight = 0;
+      }
+    });
   });
-});
+}

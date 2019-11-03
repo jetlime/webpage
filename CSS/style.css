@@ -158,7 +158,7 @@ nav :hover{
 /*Refresh button style*/
 .button_2{
     background-color: white;
-    border : white solid;
+    border : 1px solid #4CAF50;
 }
 
 .my_form{
