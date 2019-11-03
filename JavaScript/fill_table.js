@@ -1,59 +1,69 @@
 // Object defining the test details
-var test = [{
+var test = [
+  {
     test_id: "password test",
     pass: 1,
     fail: 5,
     time: 0.03,
-    pass_fail: 20,
-}, {
+    pass_fail: 20
+  },
+  {
     test_id: "Form testing",
     pass: 10,
     fail: 0,
     time: 0.09,
     pass_fail: 100
-}, {
+  },
+  {
     test_id: "Login Test 2",
     pass: 15,
     fail: 0,
     time: 0.04,
-    pass_fail: 100,
-}, {
+    pass_fail: 100
+  },
+  {
     test_id: "Pen Test",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 0
-}, {
+  },
+  {
     test_id: "Pen Test 2",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 1
-}, {
+  },
+  {
     test_id: "Pen Test 3",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 40
-}, {
+  },
+  {
     test_id: "Login Test 4",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 0
-}, {
+  },
+  {
     test_id: "Pen Test 4",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 80
-}, {
+  },
+  {
     test_id: "Pen Test 4",
     pass: 119,
     fail: 2,
     time: 0.04,
     pass_fail: 0
-}];
+  }
+];
 
 // Implementing the dynamic data from the objects in the table and the title
 document.getElementById("table_javascript").innerHTML = `
@@ -80,8 +90,9 @@ document.getElementById("table_javascript").innerHTML = `
                     </tr>
                 </thead>
                 <tbody id="myTable">
-        ${test.map(function (parameter) {
-    return `
+        ${test
+          .map(function(parameter) {
+            return `
                     <tr id="myTD">
                         <th>${parameter.test_id}</th> 
                         <th>${parameter.pass}</th>
@@ -94,7 +105,8 @@ document.getElementById("table_javascript").innerHTML = `
                         </th>
                     </tr>
         </div>`;
-}).join("")}
+          })
+          .join("")}
                 </tbody>
             </table>
     </div> 
@@ -120,150 +132,189 @@ document.getElementById("table_javascript").innerHTML = `
     <!--END of pagination tags-->
     <button type="submit" onclick="userAction()">Refresh the DATA</button>
 </div>
-`
-  // Fetch data from local server
-  const userAction = async () => {
-      return fetch('http://localhost:3000/test' ,{'mode': 'no-cors'})
-        .then(res => res)
-        .then(posts => console.log(posts))
-    }
+`;
 
-/*const userAction = async () => {
+// Fetch data from local server
+const userAction = async () => {
+  //return fetch('http://localhost:3000/test' ,{'mode': 'no-cors'})
+  //   .then(res => console.log(await res.json()))//1 min
+  // }
+  /*\
+  const response = await fetch("http://localhost:3000/test", {
+    mode: "no-cors"
+  });
+  console.log(JSON.stringify(response)); 
+  const myJson = await response.json();
+  console.log(JSON.stringify(myJson)); 
+*/
+  $.ajax({
+            url:"http://localhost:3000/test",
+            method:"GET",
+			mode: "no-cors",
+			dataType: 'jsonp',
+            success:function(data){
+				  console.log(data.test);
+            }
+        });
+		};
+/*
+  var opts = { //ajeeb oo just min
+    method: "GET",
+    headers: {},
+    mode: "no-cors"
+  };
+  fetch("http://localhost:3000/test", opts)
+    .then(function(response) {
+      return response.arrayBuffer();
+    })
+    .then(function(body) {
+      console.log(body);
+      //doSomething with body;
+    });
+};
+
+const userAction = async () => {
     fetch('http://localhost:3000/api/test' , {'mode':'no-cors'})
     .then(response => {
-        setTimeout(() => null, 0);
-        //return response.json();
+        //setTimeout(() => null, 0);
+        return response.json();
         console.log(response);
     })
     .then(response => {
         console.log(response);
     });
-  }*/
+  } */
 //const userAction = async () => {
-    //const response = fetch('http://localhost:3000/api/test' , {'mode' : 'no-cors'});
-    //console.log(response);
-    //const myJson = await response.json();
-    //console.log(JSON.stringify(myJson));
+//const response = fetch('http://localhost:3000/api/test' , {'mode' : 'no-cors'});
+//console.log(response);
+//const myJson = await response.json();
+//console.log(JSON.stringify(myJson));
 //}
 
 // Filter for the search functionality
 
 const searchFun = () => {
-    let filter = document.getElementById('myInput').value.toUpperCase();
-    console.log(filter)
-    let myTable = document.getElementById('myTable');
+  let filter = document.getElementById("myInput").value.toUpperCase();
+  console.log(filter);
+  let myTable = document.getElementById("myTable");
 
-    let tr = myTable.getElementsByTagName('tr');
+  let tr = myTable.getElementsByTagName("tr");
 
-    for (var i = 0; i < tr.length; i++) {
-        let th = tr[i].getElementsByTagName('th')[0];
+  for (var i = 0; i < tr.length; i++) {
+    let th = tr[i].getElementsByTagName("th")[0];
 
-        if (th) {
-            let textvalue = th.textContent || th.innerHTML;
+    if (th) {
+      let textvalue = th.textContent || th.innerHTML;
 
-            if (textvalue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "table-row";
-            } else {
-                tr[i].style.display = "none";
-            }
-        }
+      if (textvalue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "table-row";
+      } else {
+        tr[i].style.display = "none";
+      }
     }
-}
+  }
+};
 
 // Function that sorts the table by clicking on the header
 
 function sortTable(n) {
-
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-    table = document.getElementById("myTable");
-    switching = true;
-    //Set the sorting direction to ascending:
-    dir = "asc";
-    /*Make a loop that will continue until
+  var table,
+    rows,
+    switching,
+    i,
+    x,
+    y,
+    shouldSwitch,
+    dir,
+    switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc";
+  /*Make a loop that will continue until
     no switching has been done:*/
-    while (switching) {
-        //start by saying: no switching is done:
-        switching = false;
-        rows = table.rows;
-        /*Loop through all table rows (except the
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
         first, which contains table headers):*/
-        for (i = 0; i < (rows.length - 1); i++) {
-            //start by saying there should be no switching:
-            shouldSwitch = false;
-            /*Get the two elements you want to compare,
+    for (i = 0; i < rows.length - 1; i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
             one from current row and one from the next:*/
-            x = rows[i].getElementsByTagName("th")[n];
-            y = rows[i + 1].getElementsByTagName("th")[n];
-            /*check if the two rows should switch place,
+      x = rows[i].getElementsByTagName("th")[n];
+      y = rows[i + 1].getElementsByTagName("th")[n];
+      /*check if the two rows should switch place,
             based on the direction, asc or desc:*/
-            if (dir == "asc") {
-                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            } else if (dir == "desc") {
-                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                    //if so, mark as a switch and break the loop:
-                    shouldSwitch = true;
-                    break;
-                }
-            }
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
         }
-        if (shouldSwitch) {
-            /*If a switch has been marked, make the switch
-            and mark that a switch has been done:*/
-            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-            switching = true;
-            //Each time a switch is done, increase this count by 1:
-            switchcount++;
-        } else {
-            /*If no switching has been done AND the direction is "asc",
-            set the direction to "desc" and run the while loop again.*/
-            if (switchcount == 0 && dir == "asc") {
-                dir = "desc";
-                switching = true;
-            }
-        }
-    }
-}
-
-// Sorts table for numerical values :
-function sortingTable(n) {
-    var table, rows, switching, i, x, y, shouldSwitch;
-    table = document.getElementById("myTable");
-    switching = true;
-    /*Make a loop that will continue until
-    no switching has been done:*/
-    while (switching) {
-      //start by saying: no switching is done:
-      switching = false;
-      rows = table.rows;
-      /*Loop through all table rows (except the
-      first, which contains table headers):*/
-      for (i = 0; i < (rows.length - 1); i++) {
-        //start by saying there should be no switching:
-        shouldSwitch = false;
-        /*Get the two elements you want to compare,
-        one from current row and one from the next:*/
-        x = rows[i].getElementsByTagName("th")[n];
-        y = rows[i + 1].getElementsByTagName("th")[n];
-        //check if the two rows should switch place:
-        if (Number(x.innerHTML) > Number(y.innerHTML)) {
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
           //if so, mark as a switch and break the loop:
           shouldSwitch = true;
           break;
         }
       }
-      if (shouldSwitch) {
-        /*If a switch has been marked, make the switch
-        and mark that a switch has been done:*/
-        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+            and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount++;
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+            set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
         switching = true;
       }
     }
   }
+}
 
+// Sorts table for numerical values :
+function sortingTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+    no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+      first, which contains table headers):*/
+    for (i = 0; i < rows.length - 1; i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+        one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("th")[n];
+      y = rows[i + 1].getElementsByTagName("th")[n];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+        and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
 
 //<script type="text/javascript" src="/gs_sortable.js"></script>
 //<script type="text/javascript">
@@ -275,8 +326,7 @@ function sortingTable(n) {
 
 // sort by name
 
-
-// function that takes the pass/fail ratio from the objects to respectively 
+// function that takes the pass/fail ratio from the objects to respectively
 // replaces the width in style form the 'myBar'class. E.G : If the pass/fail ratio is 20
 // then the width in the style from the 'myBar' class will be 20. The result will be a progress
 // bar of 20 percent.
@@ -286,23 +336,22 @@ function sortingTable(n) {
 //    console.log(myBar.style.width);
 //      return document.innerHTML =`
 //  <div style=''>
-//   <div></div> 
+//   <div></div>
 //    </div>
 //      `
 //}
 
 // implement accordion view
-document.querySelectorAll('.accordion_button').forEach(button => {
-    button.addEventListener('click', () => {
-        const accordionContent = button.nextElementSibling;
+document.querySelectorAll(".accordion_button").forEach(button => {
+  button.addEventListener("click", () => {
+    const accordionContent = button.nextElementSibling;
 
-        button.classList.toggle('accordion_button--active');
+    button.classList.toggle("accordion_button--active");
 
-        if (button.classList.contains('accordion_button--active')) {
-            accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
-        } else {
-            accordionContent.style.maxHeight = 0;
-        }
-    });
+    if (button.classList.contains("accordion_button--active")) {
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px";
+    } else {
+      accordionContent.style.maxHeight = 0;
+    }
+  });
 });
-
