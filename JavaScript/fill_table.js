@@ -38,9 +38,9 @@ document.getElementById("table_javascript").innerHTML = `
                 <tbody id="myTable">
         ${test
           .map(function(parameter) {
-            return `
+            return `  
                     <tr id="myTD">
-                        <th>${parameter.test_id}</th> 
+                        <th><a target="_blank" href='id.html'>${parameter.test_id}</a></th> 
                         <th>${parameter.pass}</th>
                         <th>${parameter.fail}</th>
                         <th>${parameter.time}</th>
@@ -56,27 +56,6 @@ document.getElementById("table_javascript").innerHTML = `
                 </tbody>
             </table>
     </div> 
-    <!--START of pagination tags-->
-          <nav aria-label="...">
-              <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                  <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                  <span class="page-link">
-                    2
-                    <span class="sr-only">(current)</span>
-                  </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#">Next</a>
-                </li>
-              </ul>
-            </nav>
-    <!--END of pagination tags-->
-
 </div>
 `;
 }
