@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<recordtable
+id="a59986db-c998-4742-91e2-710ac0794551"
+mode="Desktop">
+  <codegen classname="OpenBrowser" namespace="MyTest"/>
+  <name>
+    OpenBrowser
+  </name>
+  <recorditems>
+    <openwebsiterecorditem
+        args=""
+        browser="firefox"
+        clearcache="False"
+        clearcookies="False"
+        enabled="True"
+        incognito="False"
+        instrument="True"
+        killexisting="False"
+        maximized="False"
+        optional="False">
+      <comment>
+      </comment>
+      <bindings>
+      </bindings>
+      <url>
+        www.facebook.com
+      </url>
+    </openwebsiterecorditem>
+  </recorditems>
+  <repository name="MyTestRepository" relativepath="MyTestRepository.rxrep">
+  </repository>
+</recordtable>
