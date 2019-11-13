@@ -4,7 +4,15 @@ const userAction = async () => {
             url:"http://localhost:3000/test",
             method:"GET",
 			mode: "no-cors",
-			dataType: 'jsonp',
+      dataType: 'jsonp',
+            error:function(data){
+              console.log("Error, UNABLE to fetch data from the server. Verify if the server listens on port 3000.")
+              document.getElementById('table_javascript').innerHTML = `
+              <p class='error'>ERROR</p>
+              <br>
+              <p class="error2" >It was not possible to fetch the data from the localserver. Please check if the server listens on port 3000.</p>
+              `
+            },
             success:function(data){
           console.log(data.test);
           test = data.test;

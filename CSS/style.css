@@ -258,3 +258,16 @@ h2{
     border : solid #4CAF50;
     padding : 16px;
 }
+
+/* Error message */*
+
+.error{
+    color: red ;
+    font-weight: 500;
+    font-size: 50px;
+}
+*.error2{
+    font-size: 40px;
+    font-weight: 300;
+    color: red;
+}

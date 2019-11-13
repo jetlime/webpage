@@ -9,6 +9,18 @@ app.use("/api", express.static("api"), function(req, res) {
   res.json({ error: { code: 400 } });
 });
 
+var cors = require('cors');
+var bodyParser = require('body-parser');
+
+app.use(cors({
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'origin': 'http://localhost:3000/test',
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}));
+
+
 // Create server on a given port :
 // PORT can be set in terminal zith "set PORT=portnumber" command,
 // If not defined the port number is 3000.

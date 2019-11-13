@@ -1,6 +1,6 @@
 const testId = async (ID) => {
     $.ajax({
-        url :"http://localhost:3000/test/",
+        url :"http://localhost:3000/test",
         method: 'GET',
         mode: 'no-cors',
         dataType: 'jsonp',
