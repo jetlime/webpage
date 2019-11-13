@@ -41,10 +41,46 @@ const testId = async (ID) => {
         </div>  
         <br>
         <br> 
-        <div>
-        <input width="50%" id="comment" placeholder="Input a commentary...">     
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <form>
+                        <input class="input" width="50%" id="name" placeholder="Name">     
+                        <br>
+                        <br>        
+                        <textarea onKeyUp="comment(1)" class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
+                        <button class="button_1" >Submit</button>
+                    </form>
+                    <div id="error"></div>
+                </div>
+                <div class="col-sm">
+                <br>
+                <br>
+                    The comments will be displayed here :
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, inventore quisquam amet ipsa totam delectus perferendis deleniti assumenda, beatae aliquam provident consequatur? Commodi nemo ducimus consequatur voluptatibus quam tempore esse?</p>
+                </div>
+            </div>
         </div>
+
+        
+</div>
         `
             }
     })
 }
+
+
+// Commenting functionalitie 
+
+function comment(n){
+    let name = document.getElementById('name').value.toUpperCase();
+    let input = document.getElementById("comment").value;
+    console.log(name);
+    console.log(input);
+    if(name==''){
+    document.getElementById('error').innerHTML = 
+    `
+    <p color="red">Please enter a name !</p>
+    `
+    }
+    };

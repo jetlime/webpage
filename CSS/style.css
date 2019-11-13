@@ -238,11 +238,23 @@ input[type=text] {
     color : #4CAF50;
     padding-inline-end: 20%;
     text-align-last: center;
-    padding : 5%;
+    padding : 2%;
     font-size: 50px;
 }
 
 h2{
     font-weight: 300;
     font-family: sans-serif;
+}
+
+
+/* StyleSheet for input Form */
+
+.input{
+    border: none;
+    border-bottom: 2px solid #4CAF50;
+  }
+.input_2{
+    border : solid #4CAF50;
+    padding : 16px;
 }
