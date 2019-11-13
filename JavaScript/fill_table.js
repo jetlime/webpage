@@ -48,7 +48,7 @@ document.getElementById("table_javascript").innerHTML = `
           .map(function(parameter) {
             return `  
                     <tr id="myTD">
-                        <th><a target="_blank" href='id.html'>${parameter.test_id}</a></th> 
+                        <th><a target="_blank" href='http://localhost:3000/test/${parameter.id}'>${parameter.test_id}</a></th> 
                         <th>${parameter.pass}</th>
                         <th>${parameter.fail}</th>
                         <th>${parameter.time}</th>
