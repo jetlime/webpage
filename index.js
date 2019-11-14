@@ -4,7 +4,7 @@ const app = express();
 const morgan = require("morgan");
 //will give use the time needed for the request (debug help)
 app.use(morgan("short"));
-app.use("/api", express.static("api"), function(req, res) {
+app.use("/api", express.static("api"), function (req, res) {
   res.status(404);
   res.json({ error: { code: 400 } });
 });
@@ -124,7 +124,7 @@ app.get("/", (req, res) => {
 // Get the Json array in the following directory :
 app.get("/test", (req, res) => {
   console.log(test);
-  res.jsonp({test:test}); 
+  res.jsonp({ test: test });
 });
 
 // Get a single test :
@@ -135,8 +135,8 @@ app.get("/test/:id", (req, res) => {
       .status(404)
       .send(
         "ERROR 404 File not found. A test with an id of " +
-          req.params.id +
-          " does not exist."
+        req.params.id +
+        " does not exist."
       );
     console.log("This id does not exist.");
   } else {

@@ -1,13 +1,13 @@
 const testId = async (ID) => {
     $.ajax({
-        url :"http://localhost:3000/test",
+        url: "http://localhost:3000/test",
         method: 'GET',
         mode: 'no-cors',
         dataType: 'jsonp',
-            success:function(data){
-                console.log(data);
-                test = data.test
-        document.getElementById('testid').innerHTML = `
+        success: function (data) {
+            console.log(data);
+            test = data.test
+            document.getElementById('testid').innerHTML = `
         <div class="idpage">${test[ID].test_id}</div>
         <br>
         <hr width="60%" size="2" color="#4CAF50">
@@ -65,22 +65,22 @@ const testId = async (ID) => {
         
 </div>
         `
-            }
+        }
     })
 }
 
 
 // Commenting functionalitie 
 
-function comment(n){
+function comment(n) {
     let name = document.getElementById('name').value.toUpperCase();
     let input = document.getElementById("comment").value;
     console.log(name);
     console.log(input);
-    if(name==''){
-    document.getElementById('error').innerHTML = 
-    `
+    if (name == '') {
+        document.getElementById('error').innerHTML =
+            `
     <p color="red">Please enter a name !</p>
     `
     }
-    };
+};
