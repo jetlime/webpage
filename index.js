@@ -4,10 +4,10 @@ const app = express();
 const morgan = require("morgan");
 //will give use the time needed for the request (debug help)
 app.use(morgan("short"));
-app.use("/api", express.static("api"), function(req, res) {
+/*app.use("/api", express.static("api"), function(req, res) {
     res.status(404);
     res.json({ error: { code: 400 } });
-});
+});*/
 /*
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -184,8 +184,8 @@ app.get("/test/:id", (req, res) => {
   width: 180%;
   background-color: #ddd;
 }
-    </style>
-  
+</style>
+<script src="../js" ></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <div class="idpage">${JSON.stringify(test[req.params.id].test_id).slice(1,-1).toUpperCase()}</div>
@@ -228,13 +228,13 @@ app.get("/test/:id", (req, res) => {
                         <input class="input" width="50%" id="name" placeholder="Name">     
                         <br>
                         <br>        
-                        <textarea onKeyUp="comment(1)" class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
+                        <textarea onKeyDown="if(event.keyCode==13) alert('Your comment has been posted !')"class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
                         <button class="button_1" >Submit</button>
                     </form>
                     <div id="error"></div>
                 </div>
                 <div class="col-sm">
-                <br>
+                <br> 
                 <br>
                     The comments will be displayed here :
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, inventore quisquam amet ipsa totam delectus perferendis deleniti assumenda, beatae aliquam provident consequatur? Commodi nemo ducimus consequatur voluptatibus quam tempore esse?</p>
@@ -249,3 +249,7 @@ app.get("/test/:id", (req, res) => {
     `)
     }
 });
+
+app.get('/js', function(req, res) {
+    res.sendFile(__dirname + '/testid.js')
+})
