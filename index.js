@@ -1,33 +1,19 @@
-// Import the express and morgan library
+// Import the express and morgan library (modules)
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
-//will give use the time needed for the request (debug help)
+const bodyParser = require('body-parser');
+
+// Will give use the time needed for the request (debug help)
 app.use(morgan("short"));
-/*app.use("/api", express.static("api"), function(req, res) {
-    res.status(404);
-    res.json({ error: { code: 400 } });
-});*/
-/*
-var cors = require('cors');
-var bodyParser = require('body-parser');
-*/
-/*app.use(cors({
-  'allowedHeaders': ['sessionId', 'Content-Type'],
-  'exposedHeaders': ['sessionId'],
-  'origin': 'http://localhost:3000/test',
-  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  'preflightContinue': false
-}));*/
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
-// Create server on a given port :
-// PORT can be set in terminal zith "set PORT=portnumber" command,
-// If not defined the port number is 3000.
-const port = process.env.PORT || 3000;
+// Create server on a given port 3000 :
+const port = 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
-// Json Arrays :
+// Json Arrays (Test Data) :
 const test = [{
         id: 0,
         test_id: "password test",
@@ -109,6 +95,7 @@ const test = [{
         pass_fail: 0
     }
 ];
+// GET REQUESTS :
 
 // Get request by going to the root (/) :
 // This is a callback function with two parameters.
@@ -224,12 +211,12 @@ app.get("/test/:id", (req, res) => {
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <form>
-                        <input class="input" width="50%" id="name" placeholder="Name">     
+                    <form method = "POST" action = "/test/${req.params.id}/comment">
+                        <input type="text" name="name" class="input" width="50%" id="name" placeholder="Name">     
                         <br>
                         <br>        
-                        <textarea onKeyDown="if(event.keyCode==13) alert('Your comment has been posted !')"class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
-                        <button class="button_1" >Submit</button>
+                        <textarea "class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
+                        <input type='submit' value='submit'/>
                     </form>
                     <div id="error"></div>
                 </div>
@@ -250,6 +237,17 @@ app.get("/test/:id", (req, res) => {
     }
 });
 
+// Js file for the inner HTML above
 app.get('/js', function(req, res) {
     res.sendFile(__dirname + '/testid.js')
+})
+
+app.get('/test/:id/comment'),
+    function(req, res) {
+        console.log('')
+    }
+    // Handle the post request
+app.post('/test/:id/comment', urlencodedParser, function(req, res) {
+    console.log('Data was posted on the server !');
+    console.log(req.body)
 })
