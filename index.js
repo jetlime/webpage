@@ -215,7 +215,7 @@ app.get("/test/:id", (req, res) => {
                         <input type="text" name="name" class="input" width="50%" id="name" placeholder="Name">     
                         <br>
                         <br>        
-                        <textarea "class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
+                        <textarea name="comment" class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
                         <input type='submit' value='submit'/>
                     </form>
                     <div id="error"></div>
@@ -225,6 +225,7 @@ app.get("/test/:id", (req, res) => {
                 <br>
                     The comments will be displayed here :
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, inventore quisquam amet ipsa totam delectus perferendis deleniti assumenda, beatae aliquam provident consequatur? Commodi nemo ducimus consequatur voluptatibus quam tempore esse?</p>
+                    <div id="comment"></div
                 </div>
             </div>
         </div>
@@ -242,12 +243,33 @@ app.get('/js', function(req, res) {
     res.sendFile(__dirname + '/testid.js')
 })
 
-app.get('/test/:id/comment'),
-    function(req, res) {
-        console.log('')
-    }
-    // Handle the post request
+app.get('/test/:id/comment', function(req, res) {
+    console.log(posted);
+    res.end();
+})
+
+// Handle the post request
 app.post('/test/:id/comment', urlencodedParser, function(req, res) {
     console.log('Data was posted on the server !');
-    console.log(req.body)
+    console.log("User Name : " + req.body.name);
+    console.log("User Comment: " + req.body.comment);
+    //var posted = req.body.name;
+    if (req.body.name && req.body.comment) {
+        console.log('Your comment was posted !');
+        res.sendFile(__dirname + '/HTML/comment-success.html');
+    } else if (req.body.name) {
+        console.log('Please enter a  comment!');
+        res.send("Please enter a comment");
+        res.end();
+    } else if (req.body.comment) {
+        console.log('Please enter a name !');
+        res.send("Please enter a name")
+        res.end();
+    } else {
+        console.log('Please fill out the form !');
+        res.send("Fill out the form correctly")
+        res.end();
+    }
+    res.end()
+        //return posted
 })
