@@ -23,6 +23,7 @@ const summary = async () => {
                 Totalfail += this.fail;
             })
             graphRatio = Totalpass/(Totalfail + Totalpass)*100 ;
+            var graphRatioRound = graphRatio.toString().slice(0,5);
             fillGraph = 100 - graphRatio;
             console.log(graphRatio);
             test = data.test;
@@ -40,18 +41,29 @@ const summary = async () => {
                 height : ${fillGraph}mm;
                 background : #dddd;
             }
-            .rectangleGraph:hover {
-               
-            }
+            
             </style>
-   <p> ${test.length} tests are represented on this webpage.</p>
-   <p> The sum of all passed test is : ${Totalpass}</p>
-   <p> The sum of all failed test is : ${Totalfail}</p>
-   <div class="rectangle">
-   <div class="rectangleGraph"></div>
-   </div>
-   <p>${graphRatio} %</p>
-   <span>${Totalpass} over ${Totalpass + Totalfail} tests were passed.</span>
+
+<p> ${test.length} tests are represented on this webpage.</p>
+<p> The sum of all passed test is : ${Totalpass}</p>
+<p> The sum of all failed test is : ${Totalfail}</p>
+<span>${Totalpass} over ${Totalpass + Totalfail} tests were passed.</span>
+<div class="row">
+  <div class="col-sm-4">
+    <br>
+    <h3 text-align:"center">Ratio between passed and failed tests :</h3>
+    <div class="rectangle">
+    <div class="rectangleGraph"></div>
+    </div>
+    <p>${graphRatioRound} %</p>
+  </div>
+  <div class="col-sm-4">
+    <br>
+    <h3>Number of tests displayed on the website :</h3>
+    <h4>${Totalfail + Totalpass}</h4>
+  </div>
+  <div class="col-sm-4">.col-sm-4</div>
+</div>
      `;
         }
     });
