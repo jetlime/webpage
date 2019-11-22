@@ -192,8 +192,8 @@ nav :hover {
 
 input[type=text] {
     width: 190px;
-    -webkit-transition: width 0.3s ease-in-out;
-    transition: width 0.3s ease-in-out;
+    -webkit-transition: width 3s ease-in-out;
+    transition: width 0.7s ease-in-out;
     border: 1px solid #4CAF50;
     font-size: 30px;
 }
