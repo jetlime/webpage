@@ -16,7 +16,7 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 // Json Arrays (Test Data) :
 const test = [{
         id: 0,
-        test_id: "password test",
+        test_id: "Password test",
         pass: 1,
         fail: 5,
         time: 0.03,
@@ -24,7 +24,7 @@ const test = [{
     },
     {
         id: 1,
-        test_id: "password test",
+        test_id: "Password test",
         pass: 1,
         fail: 5,
         time: 0.03,

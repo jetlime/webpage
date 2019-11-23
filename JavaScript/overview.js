@@ -15,6 +15,7 @@ const summary = async () => {
         success: function (data) {
             Totalpass = 0;
             Totalfail = 0;
+            Totaltime = 0;
             // function computing the sum of all passed test.
             $.each(data.test, function () {
                 Totalpass += this.pass;
@@ -22,6 +23,12 @@ const summary = async () => {
             $.each(data.test, function(){
                 Totalfail += this.fail;
             })
+            $.each(data.test, function(){
+                Totaltime += this.time;
+            })
+            averageTime = Totaltime/data.test.length;
+            console.log(averageTime);
+            console.log(Totaltime);
             graphRatio = Totalpass/(Totalfail + Totalpass)*100 ;
             var graphRatioRound = graphRatio.toString().slice(0,5);
             fillGraph = 100 - graphRatio;
@@ -61,8 +68,14 @@ const summary = async () => {
     <br>
     <h3>Number of tests displayed on the website :</h3>
     <h4>${Totalfail + Totalpass}</h4>
+    <br>
+    <h3>Average time for each test :</h3>
+    <h4>${averageTime} seconds</h4>
   </div>
-  <div class="col-sm-4">.col-sm-4</div>
+  <div class="col-sm-4">
+    <br>
+    <h3></h3>
+  </div>
 </div>
      `;
         }
