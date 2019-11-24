@@ -14,13 +14,14 @@ const port = 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 // Json Arrays (Test Data) :
-const test = [{
+var test = [{
         id: 0,
         test_id: "Password test",
         pass: 1,
         fail: 5,
         time: 0.03,
-        pass_fail: 20
+        pass_fail: 20,
+        comment:"",
     },
     {
         id: 1,
@@ -28,7 +29,8 @@ const test = [{
         pass: 1,
         fail: 5,
         time: 0.03,
-        pass_fail: 20
+        pass_fail: 20,
+        comment:"",
     },
     {
         id: 2,
@@ -36,7 +38,8 @@ const test = [{
         pass: 10,
         fail: 0,
         time: 0.09,
-        pass_fail: 100
+        pass_fail: 100,
+        comment:"",
     },
     {
         id: 3,
@@ -44,7 +47,8 @@ const test = [{
         pass: 15,
         fail: 0,
         time: 0.04,
-        pass_fail: 100
+        pass_fail: 100,
+        comment:"",
     },
     {
         id: 4,
@@ -52,7 +56,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 0
+        pass_fail: 0,
+        comment:"",
     },
     {
         id: 5,
@@ -60,7 +65,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 1
+        pass_fail: 1,
+        comment:"",
     },
     {
         id: 6,
@@ -68,7 +74,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 40
+        pass_fail: 40,
+        comment:"",
     },
     {
         id: 7,
@@ -76,7 +83,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 0
+        pass_fail: 0,
+        comment:"",
     },
     {
         id: 8,
@@ -84,7 +92,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 80
+        pass_fail: 80,
+        comment:"",
     },
     {
         id: 9,
@@ -92,7 +101,8 @@ const test = [{
         pass: 119,
         fail: 2,
         time: 0.04,
-        pass_fail: 0
+        pass_fail: 0,
+        comment:"",
     }
 ];
 // GET REQUESTS :
@@ -224,7 +234,7 @@ app.get("/test/:id", (req, res) => {
                 <br> 
                 <br>
                     The comments will be displayed here :
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, inventore quisquam amet ipsa totam delectus perferendis deleniti assumenda, beatae aliquam provident consequatur? Commodi nemo ducimus consequatur voluptatibus quam tempore esse?</p>
+                    <p>${test[req.params.id].comment}</p>
                     <div id="comment"></div
                 </div>
             </div>
@@ -250,15 +260,14 @@ app.get('/test/:id/comment', function(req, res) {
 
 // Handle the post request
 app.post('/test/:id/comment', urlencodedParser, function(req, res) {
-    console.log('Data was posted on the server !');
     console.log("User Name : " + req.body.name);
     console.log("User Comment: " + req.body.comment);
-    //var posted = req.body.name;
     if (req.body.name && req.body.comment) {
         console.log('Your comment was posted !');
         res.sendFile(__dirname + '/HTML/comment-success.html');
+        test[req.params.id].comment = req.body.comment ;
     } else if (req.body.name) {
-        console.log('Please enter a  comment!');
+        console.log('Please enter a comment!');
         res.send("Please enter a comment");
         res.end();
     } else if (req.body.comment) {
@@ -270,6 +279,6 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
         res.send("Fill out the form correctly")
         res.end();
     }
-    res.end()
-        //return posted
+    
+
 })
