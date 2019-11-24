@@ -21,7 +21,9 @@ var test = [{
         fail: 5,
         time: 0.03,
         pass_fail: 20,
-        comment:"",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 1,
@@ -31,6 +33,7 @@ var test = [{
         time: 0.03,
         pass_fail: 20,
         comment:"",
+        commentuser : "",
     },
     {
         id: 2,
@@ -40,6 +43,7 @@ var test = [{
         time: 0.09,
         pass_fail: 100,
         comment:"",
+        commentuser : "",
     },
     {
         id: 3,
@@ -49,6 +53,7 @@ var test = [{
         time: 0.04,
         pass_fail: 100,
         comment:"",
+        commentuser : "",
     },
     {
         id: 4,
@@ -58,6 +63,7 @@ var test = [{
         time: 0.04,
         pass_fail: 0,
         comment:"",
+        commentuser : "",
     },
     {
         id: 5,
@@ -67,6 +73,7 @@ var test = [{
         time: 0.04,
         pass_fail: 1,
         comment:"",
+        commentuser : "",
     },
     {
         id: 6,
@@ -76,6 +83,7 @@ var test = [{
         time: 0.04,
         pass_fail: 40,
         comment:"",
+        commentuser : "",
     },
     {
         id: 7,
@@ -85,6 +93,7 @@ var test = [{
         time: 0.04,
         pass_fail: 0,
         comment:"",
+        commentuser : "",
     },
     {
         id: 8,
@@ -94,6 +103,7 @@ var test = [{
         time: 0.04,
         pass_fail: 80,
         comment:"",
+        commentuser : "",
     },
     {
         id: 9,
@@ -103,6 +113,7 @@ var test = [{
         time: 0.04,
         pass_fail: 0,
         comment:"",
+        commentuser : "",
     }
 ];
 // GET REQUESTS :
@@ -233,8 +244,8 @@ app.get("/test/:id", (req, res) => {
                 <div class="col-sm">
                 <br> 
                 <br>
-                    The comments will be displayed here :
-                    <p>${test[req.params.id].comment}</p>
+                    User comments :
+                    <p>${test[req.params.id].commentuser.toUpperCase()} : ${test[req.params.id].comment}</p>
                     <div id="comment"></div
                 </div>
             </div>
@@ -266,6 +277,7 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
         console.log('Your comment was posted !');
         res.sendFile(__dirname + '/HTML/comment-success.html');
         test[req.params.id].comment = req.body.comment ;
+        test[req.params.id].commentuser = req.body.name ;
     } else if (req.body.name) {
         console.log('Please enter a comment!');
         res.send("Please enter a comment");
