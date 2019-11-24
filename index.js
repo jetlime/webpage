@@ -254,7 +254,7 @@ app.get('/js', function(req, res) {
 })
 
 app.get('/test/:id/comment', function(req, res) {
-    console.log(posted);
+    console.log();
     res.end();
 })
 
