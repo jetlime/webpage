@@ -201,6 +201,15 @@ app.get("/test/:id", (req, res) => {
   width: 180%;
   background-color: #ddd;
 }
+.username{
+    color : #4CAF50;
+    font-weight : 700;
+    font-size : 22px;
+}
+.form{
+    background-color:white;
+    border : 1px solid black;
+}
 </style>
 <script src="../js" ></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -246,7 +255,8 @@ app.get("/test/:id", (req, res) => {
                         <br>
                         <br>        
                         <textarea name="comment" class="input_2" id="comment" placeholder="Please enter a comment ..." rows="10" cols="70"></textarea>
-                        <input type='submit' value='submit'/>
+                        <br>
+                        <input class="form" type='submit' value='Submit'/> 
                     </form>
                     <div id="error"></div>
                 </div>
@@ -254,7 +264,14 @@ app.get("/test/:id", (req, res) => {
                 <br> 
                 <br>
                     <h4>User comments :</h4>
-                    <p>${JSON.stringify(test[req.params.id].comments.comment)} : ${JSON.stringify(test[req.params.id].comments.commentuser)}</p>
+                    <p>${test[req.params.id].comments.map(function(parameter){
+                        return`
+                           <p class="username"> ${parameter.commentuser}</p>
+                            <p>${parameter.comment}</p>
+                            
+                        `
+                    }).join("")
+                        }</p>
                     <div id="comment"></div
                 </div>
             </div>
@@ -274,7 +291,6 @@ app.get('/js', function(req, res) {
 })
 
 app.get('/test/:id/comment', function(req, res) {
-    console.log();
     res.end();
 })
 
@@ -289,6 +305,8 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
             comment: req.body.comment,
             commentuser: req.body.name
         })
+        console.log(test[req.params.id].comments);
+        
     } else if (req.body.name) {
         console.log('Please enter a comment!');
         res.send("Please enter a comment");
