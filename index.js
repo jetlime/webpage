@@ -32,8 +32,9 @@ var test = [{
         fail: 5,
         time: 0.03,
         pass_fail: 20,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 2,
@@ -42,8 +43,9 @@ var test = [{
         fail: 0,
         time: 0.09,
         pass_fail: 100,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 3,
@@ -52,8 +54,9 @@ var test = [{
         fail: 0,
         time: 0.04,
         pass_fail: 100,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 4,
@@ -62,18 +65,20 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 5,
         test_id: "Pen Test 2",
-        pass: 119,
-        fail: 2,
-        time: 0.04,
+        pass: 19,
+        fail: 22,
+        time: 0.08,
         pass_fail: 1,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 6,
@@ -82,8 +87,9 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 40,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 7,
@@ -92,28 +98,31 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 8,
         test_id: "Pen Test 4",
         pass: 119,
-        fail: 2,
+        fail: 210,
         time: 0.04,
         pass_fail: 80,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     },
     {
         id: 9,
-        test_id: "Pen Test 4",
-        pass: 119,
+        test_id: "Pen Test 5",
+        pass: 12,
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comment:"",
-        commentuser : "",
+        comments : [
+            {comment : "", commentuser : "" },
+        ]
     }
 ];
 // GET REQUESTS :
@@ -244,8 +253,8 @@ app.get("/test/:id", (req, res) => {
                 <div class="col-sm">
                 <br> 
                 <br>
-                    User comments :
-                    <p>${test[req.params.id].commentuser.toUpperCase()} : ${test[req.params.id].comment}</p>
+                    <h4>User comments :</h4>
+                    <p>${JSON.stringify(test[req.params.id].comments.comment)} : ${JSON.stringify(test[req.params.id].comments.commentuser)}</p>
                     <div id="comment"></div
                 </div>
             </div>
@@ -276,8 +285,10 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
     if (req.body.name && req.body.comment) {
         console.log('Your comment was posted !');
         res.sendFile(__dirname + '/HTML/comment-success.html');
-        test[req.params.id].comment = req.body.comment ;
-        test[req.params.id].commentuser = req.body.name ;
+        test[req.params.id].comments.push({
+            comment: req.body.comment,
+            commentuser: req.body.name
+        })
     } else if (req.body.name) {
         console.log('Please enter a comment!');
         res.send("Please enter a comment");

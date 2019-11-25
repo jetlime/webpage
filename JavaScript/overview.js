@@ -27,7 +27,7 @@ const summary = async () => {
                 Totaltime += this.time;
             })
             averageTime = Totaltime/data.test.length;
-            console.log(averageTime);
+            console.log(averageTime.toString().slice(0,5));
             console.log(Totaltime);
             graphRatio = Totalpass/(Totalfail + Totalpass)*100 ;
             var graphRatioRound = graphRatio.toString().slice(0,5);
@@ -51,14 +51,11 @@ const summary = async () => {
             
             </style>
 
-<p> ${test.length} tests are represented on this webpage.</p>
-<p> The sum of all passed test is : ${Totalpass}</p>
-<p> The sum of all failed test is : ${Totalfail}</p>
-<span>${Totalpass} over ${Totalpass + Totalfail} tests were passed.</span>
+<br>
 <div class="row">
   <div class="col-sm-4">
     <br>
-    <h3 text-align:"center">Ratio between passed and failed tests :</h3>
+    <h3 text-align:"center">Percentage of passed tests :</h3>
     <div class="rectangle">
     <div class="rectangleGraph"></div>
     </div>
@@ -70,11 +67,15 @@ const summary = async () => {
     <h4>${Totalfail + Totalpass}</h4>
     <br>
     <h3>Average time for each test :</h3>
-    <h4>${averageTime} seconds</h4>
+    <h4>${averageTime.toString().slice(0,5)} seconds</h4>
   </div>
   <div class="col-sm-4">
     <br>
-    <h3></h3>
+    <h4>The sum a of all passed test is :${Totalpass}</h4>
+    <br>
+    <h4>The sum of all failed tests is :${Totalfail}</h4>
+    <br>
+    <h4>${Totalpass} over ${Totalpass + Totalfail} tests were passed</h4>
   </div>
 </div>
      `;
