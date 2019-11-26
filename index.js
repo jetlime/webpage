@@ -290,9 +290,12 @@ app.get('/js', function(req, res) {
     res.sendFile(__dirname + '/testid.js')
 })
 
+
+
 app.get('/test/:id/comment', function(req, res) {
     res.end();
 })
+
 
 // Handle the post request
 app.post('/test/:id/comment', urlencodedParser, function(req, res) {
