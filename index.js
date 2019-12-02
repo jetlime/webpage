@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 // Will give use the time needed for the request (debug help)
 app.use(morgan("short"));
 
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({
+    extended: false
+})
 
 // Create server on a given port 3000 :
 const port = 3000;
@@ -21,9 +23,10 @@ var test = [{
         fail: 5,
         time: 0.03,
         pass_fail: 20,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 1,
@@ -32,9 +35,10 @@ var test = [{
         fail: 5,
         time: 0.03,
         pass_fail: 20,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 2,
@@ -43,9 +47,10 @@ var test = [{
         fail: 0,
         time: 0.09,
         pass_fail: 100,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 3,
@@ -54,9 +59,10 @@ var test = [{
         fail: 0,
         time: 0.04,
         pass_fail: 100,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 4,
@@ -65,9 +71,10 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 5,
@@ -76,9 +83,10 @@ var test = [{
         fail: 22,
         time: 0.08,
         pass_fail: 1,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 6,
@@ -87,9 +95,10 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 40,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 7,
@@ -98,9 +107,10 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 8,
@@ -109,9 +119,10 @@ var test = [{
         fail: 210,
         time: 0.04,
         pass_fail: 80,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     },
     {
         id: 9,
@@ -120,9 +131,10 @@ var test = [{
         fail: 2,
         time: 0.04,
         pass_fail: 0,
-        comments : [
-            {comment : "", commentuser : "" },
-        ]
+        comments: [{
+            comment: "",
+            commentuser: ""
+        }, ]
     }
 ];
 // GET REQUESTS :
@@ -140,7 +152,9 @@ app.get("/", (req, res) => {
 // Get the Json array in the following directory :
 app.get("/test", (req, res) => {
     console.log(test);
-    res.jsonp({ test: test });
+    res.jsonp({
+        test: test
+    });
 });
 
 // Get a single test :
@@ -211,7 +225,11 @@ app.get("/test/:id", (req, res) => {
     border : 1px solid black;
 }
 </style>
-<script src="../js" ></script>
+<script>
+    function deleteComment(id){
+        console.log("hello", id)
+    }
+</script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <div class="idpage">${JSON.stringify(test[req.params.id].test_id).slice(1,-1).toUpperCase()}</div>
@@ -266,9 +284,9 @@ app.get("/test/:id", (req, res) => {
                     <h4>User comments :</h4>
                     <p>${test[req.params.id].comments.map(function(parameter){
                         return`
-                           <p class="username"> ${parameter.commentuser}</p>
+                            <p class="username"> ${parameter.commentuser}</p>
                             <p>${parameter.comment}</p>
-                            
+                            <button onClick="deleteComment(${})" class="form">Delete the comment above</button>
                         `
                     }).join("")
                         }</p>
@@ -285,20 +303,16 @@ app.get("/test/:id", (req, res) => {
     }
 });
 
-// Js file for the inner HTML above
-app.get('/js', function(req, res) {
-    res.sendFile(__dirname + '/testid.js')
-})
 
 
 
-app.get('/test/:id/comment', function(req, res) {
+app.get('/test/:id/comment', function (req, res) {
     res.end();
 })
 
 
 // Handle the post request
-app.post('/test/:id/comment', urlencodedParser, function(req, res) {
+app.post('/test/:id/comment', urlencodedParser, function (req, res) {
     console.log("User Name : " + req.body.name);
     console.log("User Comment: " + req.body.comment);
     if (req.body.name && req.body.comment) {
@@ -309,7 +323,7 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
             commentuser: req.body.name
         })
         console.log(test[req.params.id].comments);
-        
+
     } else if (req.body.name) {
         console.log('Please enter a comment!');
         res.send("Please enter a comment");
@@ -323,6 +337,6 @@ app.post('/test/:id/comment', urlencodedParser, function(req, res) {
         res.send("Fill out the form correctly")
         res.end();
     }
-    
+
 
 })
