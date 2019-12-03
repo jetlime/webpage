@@ -286,7 +286,7 @@ app.get("/test/:id", (req, res) => {
                         return`
                             <p class="username"> ${parameter.commentuser}</p>
                             <p>${parameter.comment}</p>
-                            <button onClick="deleteComment(${})" class="form">Delete the comment above</button>
+                            <button onClick="deleteComment()" class="form">Delete the comment above</button>
                         `
                     }).join("")
                         }</p>
