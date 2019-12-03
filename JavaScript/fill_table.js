@@ -94,6 +94,8 @@ const searchFun = () => {
   }
 };
 
+
+
 // Function that sorts the table by clicking on the header
 
 function sortTable(n) {
