@@ -225,11 +225,7 @@ app.get("/test/:id", (req, res) => {
     border : 1px solid black;
 }
 </style>
-<script>
-    function deleteComment(id){
-        console.log("hello", id)
-    }
-</script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <div class="idpage">${JSON.stringify(test[req.params.id].test_id).slice(1,-1).toUpperCase()}</div>
@@ -286,7 +282,7 @@ app.get("/test/:id", (req, res) => {
                         return`
                             <p class="username"> ${parameter.commentuser}</p>
                             <p>${parameter.comment}</p>
-                            <button onClick="deleteComment()" class="form">Delete the comment above</button>
+                           
                         `
                     }).join("")
                         }</p>
