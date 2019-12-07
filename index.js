@@ -18,7 +18,7 @@ app.listen(port, () => console.log(`Listening on port ${port}...`));
 // Json Arrays (Test Data) :
 var test = [{
         id: 0,
-        test_id: "Password test",
+        test_id: "APassword test",
         pass: 1,
         fail: 5,
         time: 0.03,
@@ -30,7 +30,7 @@ var test = [{
     },
     {
         id: 1,
-        test_id: "Password test",
+        test_id: "BPassword testing",
         pass: 1,
         fail: 5,
         time: 0.03,
@@ -42,7 +42,7 @@ var test = [{
     },
     {
         id: 2,
-        test_id: "Form testing",
+        test_id: "CForm testing",
         pass: 10,
         fail: 0,
         time: 0.09,
@@ -54,7 +54,7 @@ var test = [{
     },
     {
         id: 3,
-        test_id: "Login Test 2",
+        test_id: "DLogin Test Admin",
         pass: 15,
         fail: 0,
         time: 0.04,
@@ -66,7 +66,7 @@ var test = [{
     },
     {
         id: 4,
-        test_id: "Pen Test",
+        test_id: "EPen Test",
         pass: 119,
         fail: 2,
         time: 0.04,
@@ -78,7 +78,7 @@ var test = [{
     },
     {
         id: 5,
-        test_id: "Pen Test 2",
+        test_id: "FPen Test DDOS",
         pass: 19,
         fail: 22,
         time: 0.08,
@@ -90,7 +90,7 @@ var test = [{
     },
     {
         id: 6,
-        test_id: "Pen Test 3",
+        test_id: "GPen Test PHISHING",
         pass: 119,
         fail: 2,
         time: 0.04,
@@ -102,7 +102,7 @@ var test = [{
     },
     {
         id: 7,
-        test_id: "Login Test 4",
+        test_id: "KLogin Test ",
         pass: 119,
         fail: 2,
         time: 0.04,
@@ -114,7 +114,7 @@ var test = [{
     },
     {
         id: 8,
-        test_id: "Pen Test 4",
+        test_id: "IPen Test Bruteforce",
         pass: 119,
         fail: 210,
         time: 0.04,
@@ -126,7 +126,7 @@ var test = [{
     },
     {
         id: 9,
-        test_id: "Pen Test 5",
+        test_id: "JPen Test ",
         pass: 12,
         fail: 2,
         time: 0.04,
@@ -153,7 +153,7 @@ app.get("/", (req, res) => {
 app.get("/test", (req, res) => {
     console.log(test);
     res.jsonp({
-        test: test
+        test:test
     });
 });
 
