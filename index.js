@@ -153,7 +153,7 @@ app.get("/", (req, res) => {
 app.get("/test", (req, res) => {
     console.log(test);
     res.jsonp({
-        test:test
+        test: test
     });
 });
 

@@ -1,26 +1,26 @@
 // Fetching data from localhost :
-const userAction = async() => {
-        $.ajax({
-                    url: "http://localhost:3000/test",
-                    method: "GET",
-                    mode: "no-cors",
-                    dataType: 'jsonp',
-                    error: function(data) {
-                        console.log("Error, UNABLE to fetch data from the server. Verify if the server listens on port 3000.")
-                        document.getElementById('table_javascript').innerHTML = `
+const userAction = async () => {
+  $.ajax({
+    url: "http://localhost:3000/test",
+    method: "GET",
+    mode: "no-cors",
+    dataType: 'jsonp',
+    error: function (data) {
+      console.log("Error, UNABLE to fetch data from the server. Verify if the server listens on port 3000.")
+      document.getElementById('table_javascript').innerHTML = `
               <p class='error'>ERROR</p>
               <br>
               <p class="error2" >It was not possible to fetch the data from the localserver. Please check if the server listens on port 3000.</p>
               `
-                    },
-                    success: function(data) {
-                            console.log(data.test);
-                            test = data.test;
-                            console.log(test);
+    },
+    success: function (data) {
+      console.log(data.test);
+      test = data.test;
+      console.log(test);
 
 
-                            // Implementing the dynamic data from the objects in the table and the title
-                            document.getElementById("table_javascript").innerHTML = `
+      // Implementing the dynamic data from the objects in the table and the title
+      document.getElementById("table_javascript").innerHTML = `
 <div class='accodion'>
     <button onClick="accordion()"  class='accordion_button'>
         <h2 class="text">Test Statistics (${test.length} results) :</h2>
@@ -36,7 +36,7 @@ const userAction = async() => {
             <table id='mySortedTable'>
                 <thead id='myHead'>
                     <tr>
-                        <td onClick="sortTable(0)">Total <i class="fas fa-sort toggle"></i></td>
+                        <td onClick="sortTable(0)">Name <i class="fas fa-sort toggle"></i></td>
                         <td onClick="sortingTable(1)">Pass <i class="fas fa-sort toggle"></i></td>
                         <td onClick="sortingTable(2)">Fail <i class="fas fa-sort toggle"></i></td>
                         <td onClick="sortingTable(3)">Time needed <i class="fas fa-sort toggle"></i></td>
@@ -66,8 +66,8 @@ const userAction = async() => {
     </div> 
 </div>
 `;
-}
-});
+    }
+  });
 };
 
 // Filter for the search functionality
@@ -102,7 +102,7 @@ function sortTable(n) {
   var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
   table = document.getElementById("myTable");
   switching = true;
-  dir = "asc"; 
+  dir = "asc";
   while (switching) {
     switching = false;
     rows = table.rows;
@@ -118,7 +118,7 @@ function sortTable(n) {
       if (dir == "asc") {
         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
           //if so, mark as a switch and break the loop:
-          shouldSwitch= true;
+          shouldSwitch = true;
           break;
         }
       } else if (dir == "desc") {
@@ -135,7 +135,7 @@ function sortTable(n) {
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
       switching = true;
       //Each time a switch is done, increase this count by 1:
-      switchcount ++;      
+      switchcount++;
     } else {
       /*If no switching has been done AND the direction is "asc",
       set the direction to "desc" and run the while loop again.*/
