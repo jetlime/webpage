@@ -15,128 +15,7 @@ var urlencodedParser = bodyParser.urlencoded({
 const port = 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
-// Json Arrays (Test Data) :
-var test = [{
-        id: 0,
-        test_id: "APassword test",
-        pass: 1,
-        fail: 5,
-        time: 0.03,
-        pass_fail: 20,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 1,
-        test_id: "BPassword testing",
-        pass: 1,
-        fail: 5,
-        time: 0.03,
-        pass_fail: 20,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 2,
-        test_id: "CForm testing",
-        pass: 10,
-        fail: 0,
-        time: 0.09,
-        pass_fail: 100,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 3,
-        test_id: "DLogin Test Admin",
-        pass: 15,
-        fail: 0,
-        time: 0.04,
-        pass_fail: 100,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 4,
-        test_id: "EPen Test",
-        pass: 119,
-        fail: 2,
-        time: 0.04,
-        pass_fail: 0,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 5,
-        test_id: "FPen Test DDOS",
-        pass: 19,
-        fail: 22,
-        time: 0.08,
-        pass_fail: 1,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 6,
-        test_id: "GPen Test PHISHING",
-        pass: 119,
-        fail: 2,
-        time: 0.04,
-        pass_fail: 40,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 7,
-        test_id: "KLogin Test ",
-        pass: 119,
-        fail: 2,
-        time: 0.04,
-        pass_fail: 0,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 8,
-        test_id: "IPen Test Bruteforce",
-        pass: 119,
-        fail: 210,
-        time: 0.04,
-        pass_fail: 80,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    },
-    {
-        id: 9,
-        test_id: "JPen Test ",
-        pass: 12,
-        fail: 2,
-        time: 0.04,
-        pass_fail: 0,
-        comments: [{
-            comment: "",
-            commentuser: ""
-        }, ]
-    }
-];
+
 // GET REQUESTS :
 
 // Get request by going to the root (/) :
@@ -148,19 +27,22 @@ app.get("/", (req, res) => {
         'This is the root of the local webserver. Under the directory "/test" you will find the Json arrays.'
     );
 });
+ 
+const testing = require('./api/data.json');
+
 
 // Get the Json array in the following directory :
 app.get("/test", (req, res) => {
-    console.log(test);
+    console.log(testing);
     res.jsonp({
-        test: test
+        test: testing
     });
 });
 
 // Get a single test :
 app.get("/test/:id", (req, res) => {
     // If the id does not exist an error is shown :
-    if (req.params.id > test.length - 1) {
+    if (req.params.id > testing.length - 1) {
         res
             .status(404)
             .send(
@@ -172,7 +54,7 @@ app.get("/test/:id", (req, res) => {
     } else {
         console.log("Fetching user with id " + req.params.id);
         //res.json(test[req.params.id]);
-        console.log(JSON.stringify(test[req.params.id]))
+        console.log(JSON.stringify(testing[req.params.id]))
         res.send(`
     <style>
     .idpage{
@@ -228,7 +110,7 @@ app.get("/test/:id", (req, res) => {
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <div class="idpage">${JSON.stringify(test[req.params.id].test_id).slice(1,-1).toUpperCase()}</div>
+    <div class="idpage">${JSON.stringify(testing[req.params.id].test_id).slice(1,-1).toUpperCase()}</div>
         <br>
         <hr width="60%" size="2" color="#4CAF50">
         <br>
@@ -238,23 +120,23 @@ app.get("/test/:id", (req, res) => {
                 <div class="col-sm">
                     <h2>Average time : </h2>
                     <br>
-                    ${JSON.stringify(test[req.params.id].time)} seconds
+                    ${JSON.stringify(testing[req.params.id].time)} seconds
                 </div>
                 <div class="col-sm">
                     <h2>Passed tests :</h2>
                     <br>
-                    ${JSON.stringify(test[req.params.id].pass)}
+                    ${JSON.stringify(testing[req.params.id].pass)}
                 </div>
                 <div class="col-sm">
                     <h2>Failed Test : </h2>
                     <br>
-                    ${JSON.stringify(test[req.params.id].fail)}
+                    ${JSON.stringify(testing[req.params.id].fail)}
                 </div>
                 <div class="col-sm">
                     <h2>Ratio :</h2>
                     <br>
                     <div class='myProgress'>
-                    <div style="background-color:#4CAF50; width:${JSON.stringify(test[req.params.id].pass_fail)}%;">${JSON.stringify(test[req.params.id].pass_fail)}%</div>
+                    <div style="background-color:#4CAF50; width:${JSON.stringify(testing[req.params.id].pass_fail)}%;">${JSON.stringify(testing[req.params.id].pass_fail)}%</div>
                     </div>
                 </div>
             </div>
@@ -278,7 +160,7 @@ app.get("/test/:id", (req, res) => {
                 <br> 
                 <br>
                     <h4>User comments :</h4>
-                    <p>${test[req.params.id].comments.map(function(parameter){
+                    <p>${testing[req.params.id].comments.map(function(parameter){
                         return`
                             <p class="username"> ${parameter.commentuser}</p>
                             <p>${parameter.comment}</p>
@@ -314,11 +196,17 @@ app.post('/test/:id/comment', urlencodedParser, function (req, res) {
     if (req.body.name && req.body.comment) {
         console.log('Your comment was posted !');
         res.sendFile(__dirname + '/HTML/comment-success.html');
-        test[req.params.id].comments.push({
+        testing[req.params.id].comments.push({
             comment: req.body.comment,
             commentuser: req.body.name
         })
-        console.log(test[req.params.id].comments);
+        fs = require('fs');
+        try {
+            const data = fs.writeFileSync('./api/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {flag: "a+"})
+            //file written successfully
+          } catch (err) {
+            console.error(err)
+          }
 
     } else if (req.body.name) {
         console.log('Please enter a comment!');
