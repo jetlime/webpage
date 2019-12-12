@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
     );
 });
  
-const testing = require('./api/data.json');
+const testing = require('./data.json');
 
 
 // Get the Json array in the following directory :
@@ -202,7 +202,7 @@ app.post('/test/:id/comment', urlencodedParser, function (req, res) {
         })
         fs = require('fs');
         try {
-            const data = fs.writeFileSync('./api/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {flag: "a+"})
+            const data = fs.writeFileSync('./names.txt', req.body.name + " commented " + req.body.comment + ". \n", {flag: "a+"})
             //file written successfully
           } catch (err) {
             console.error(err)
