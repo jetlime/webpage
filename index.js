@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
         'This is the root of the local webserver. Under the directory "/test" you will find the Json arrays.'
     );
 });
- 
+
 const testing = require('./serverdata/data.json');
 
 
@@ -202,11 +202,21 @@ app.post('/test/:id/comment', urlencodedParser, function (req, res) {
         })
         fs = require('fs');
         try {
-            const data = fs.writeFileSync('./serverdata/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {flag: "a+"})
+            const data = fs.writeFileSync('./serverdata/TEST.json', req.body.name, {
+                flag: "a+"
+            })
+        } catch (err) {
+            console.error(err);
+        }
+
+        try {
+            const data = fs.writeFileSync('./serverdata/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {
+                flag: "a+"
+            })
             //file written successfully
-          } catch (err) {
-            console.error(err)
-          }
+        } catch (err) {
+            console.error(err);
+        }
 
     } else if (req.body.name) {
         console.log('Please enter a comment!');
