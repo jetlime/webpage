@@ -196,20 +196,29 @@ app.post('/test/:id/comment', urlencodedParser, function (req, res) {
     if (req.body.name && req.body.comment) {
         console.log('Your comment was posted !');
         res.sendFile(__dirname + '/HTML/comment-success.html');
-        testing[req.params.id].comments.push({
-            comment: req.body.comment,
-            commentuser: req.body.name
-        })
-        fs = require('fs');
-        try {
-            const data = fs.writeFileSync('./serverdata/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {
-                flag: "a+"
-            })
-            //file written successfully
-        } catch (err) {
-            console.error(err);
-        }
+       
+        // The data is saved on the file.
+        let fs = require('fs');
+        fs.readFile('./serverdata/data.json', 'utf8', function (err, data) {
+            if (err) {
+                console.log(err)
+            } else {
+                testing[req.params.id].comments.push({
+                    "comment": req.body.comment,
+                    "commentuser": req.body.name
+                });
+                const json = JSON.stringify(testing);
 
+                fs.writeFile('./serverdata/data.json', json, 'utf8', function (err) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        //Everything went OK!
+                    }
+                });
+            }
+
+        });
     } else if (req.body.name) {
         console.log('Please enter a comment!');
         res.send("Please enter a comment");
