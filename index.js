@@ -202,14 +202,6 @@ app.post('/test/:id/comment', urlencodedParser, function (req, res) {
         })
         fs = require('fs');
         try {
-            const data = fs.writeFileSync('./serverdata/TEST.json', req.body.name, {
-                flag: "a+"
-            })
-        } catch (err) {
-            console.error(err);
-        }
-
-        try {
             const data = fs.writeFileSync('./serverdata/names.txt', req.body.name + " commented " + req.body.comment + ". \n", {
                 flag: "a+"
             })
