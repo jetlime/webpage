@@ -11,54 +11,30 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* PhD in Cybersecurity, Institut Polytechnique de Paris & Orange, 2024-2027
+* M.Sc. in Cybersecurity, Institut Polytechnique de Paris, 2024
+* B.Sc. in Computer Science, University of Luxembourg, 2022
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* 2024: Research Intern
+  * [The University of Queensland](https://uq.edu.au/)
+  * Study of Evasion Attacks and corresponding Defenses against Transformer-based Network Intrusion Detection Systems.
+  * Supervisors: [Dr. Priyanka Singh](https://scholar.google.com/citations?user=n1pfC-0AAAAJ&hl=en&oi=ao), [Assoc. Prof. Marius Portmann](https://scholar.google.com/citations?user=hiYVpa0AAAAJ&hl=en&oi=ao), [Dr. Siamak Layeghy](https://scholar.google.com/citations?user=uB6MlpQAAAAJ&hl=en&oi=ao)
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* 2023: Research Intern
+  * [Outshift by Cisco](https://outshift.cisco.com/)
+  * Novel design and implementation of a realistic and scalable adversary emulation methodology for cloud-native environments. A significant contribution for training threat detection systems relying on eBPF telemetry sensors. 
+  * Supervisors: [Dr. Luca Muscariello](https://scholar.google.com/citations?hl=en&user=Q36qUAsAAAAJ), [Dr. Jacques Samain](https://scholar.google.com/citations?user=Kp5KmywAAAAJ&hl=en&oi=ao)
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* 2022: Research Intern
+  * [University of Luxembourg](http://uni.lu/)
+  * Assisting an ongoing study in the field of HCI and Machine Learning on visual saliency of users on visual designs. Design and implementation of empirical experiments.
+  * Supervisor: [Prof. Luis A. Leiva](https://luis.leiva.name/web/)
   
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
 Publications
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
