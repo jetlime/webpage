@@ -12,7 +12,7 @@ name                     : &name "Paul R. B. Houssel"
 description              : &description "personal description"
 url                      : https://houssel.fr
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "jetlime/Personal-Website"
+repository               : "jetlime/webpage"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
@@ -164,6 +164,9 @@ collections:
     output: true
     permalink: /:collection/:path/
   talks:
+    output: true
+    permalink: /:collection/:path/
+  teaching:
     output: true
     permalink: /:collection/:path/
 

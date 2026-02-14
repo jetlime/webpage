@@ -2,7 +2,7 @@
 title: "Research Project Tutor"
 collection: teaching
 type: "Undergraduate course"
-permalink: /teaching/tutor-teaching
+permalink: /teaching/tutor-teaching-luxembourg
 venue: "University of Luxembourg, Faculty of Science, Technology and Medicine"
 date: 2021-05-01
 location: "Luxembourg, Luxembourg"
