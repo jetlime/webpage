@@ -10,7 +10,7 @@ title                    : "Paul Houssel"
 title_separator          : "-"
 name                     : &name "Paul R. B. Houssel"
 description              : &description "personal description"
-url                      : https://houssel.fr
+url                      : https://p.houssel.fr
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "jetlime/webpage"
 
